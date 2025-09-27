@@ -20,3 +20,15 @@ docker container create --name mongoserver2 mongo:4.1
 docker container ls --all
 
 # jalankan container
+
+docker container start mongoserver1
+docker container ls
+docker container start mongoserver2
+docker container ls
+
+# menghapus container
+
+docker container rm mongoserver1
+docker container ls
+docker container stop mongoserver1
+docker container stop mongoserver1 mongoserver2
