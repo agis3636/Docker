@@ -1,3 +1,5 @@
+# Install Dengan Cara Manual (pakai repo resmi + apt)
+
 ## 🔹 1. Hapus paket lama (clean up)
 
 ```bash
@@ -81,5 +83,73 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 * `containerd.io` → runtime container yang dipakai Docker untuk jalanin container.
 * `docker-buildx-plugin` → plugin untuk build image (lebih modern dari `docker build`).
 * `docker-compose-plugin` → plugin Compose v2 (jalan lewat `docker compose`, bukan lagi `docker-compose`).
+
+---
+
+# Install Dengan Script Otomatis (get.docker.com / test.docker.com)
+
+## 🔹 1. Install via script resmi Docker
+
+```bash
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+```
+
+👉 Ini **script resmi dari Docker** (dibuat oleh tim Docker).
+
+* Script ini otomatis melakukan semua langkah manual yang tadi:
+
+  * Hapus paket lama.
+  * Tambah GPG key.
+  * Tambah repo Docker.
+  * Install `docker-ce`, `docker-ce-cli`, `containerd.io`, dll.
+
+📌 Bedanya: kamu nggak perlu ketik satu-satu, semuanya sudah di-otomatisasi.
+⚠️ Tapi:
+
+* Kamu nggak lihat detail step-nya (black box).
+* Kalau ada error, lebih susah debug dibanding cara manual.
+
+## 🔹 2. `--dry-run`
+
+```bash
+sudo sh ./get-docker.sh --dry-run
+```
+
+👉 Mode simulasi.
+
+* Script dijalankan **tapi tidak benar-benar install**, hanya menampilkan **apa saja yang bakal dilakukan**.
+* Cocok buat ngecek dulu sebelum beneran install.
+
+## 🔹 3. Test / Experimental script
+
+```bash
+curl -fsSL https://test.docker.com -o test-docker.sh
+sudo sh test-docker.sh
+```
+
+👉 Ini **versi “test channel”** dari script Docker.
+
+* Bedanya dengan `get.docker.com`:
+
+  * `get.docker.com` → install **versi stable (stabil)**.
+  * `test.docker.com` → install **versi preview / nightly / experimental** (fitur baru, belum tentu stabil).
+
+⚠️ Cocok kalau kamu developer atau butuh coba fitur terbaru Docker.
+⚠️ Jangan dipakai di server produksi karena rawan bug.
+
+## 📌 Perbandingan cara manual vs script
+
+| Metode                     | Kelebihan                                                                  | Kekurangan                                 |
+| -------------------------- | -------------------------------------------------------------------------- | ------------------------------------------ |
+| **Manual (repo + apt)**    | Lebih transparan, mudah debug kalau error, bisa kontrol versi yang dipakai | Step panjang, harus ketik banyak           |
+| **Script get.docker.com**  | Cepat, otomatis, cukup 2 baris                                             | Kurang transparan, lebih susah debug       |
+| **Script test.docker.com** | Dapat versi terbaru/eksperimental                                          | Tidak stabil, rawan bug di server produksi |
+
+## 🔑 Kesimpulan
+
+* Kalau buat **production / server** → lebih aman pakai **cara manual (repo + apt)** atau **get.docker.com stable**.
+* Kalau buat **testing / coba fitur terbaru** → pakai **test.docker.com**.
+* Kalau butuh cepat dan nggak ribet → `get.docker.com` paling praktis.
 
 ---
