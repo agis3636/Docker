@@ -70,20 +70,63 @@ Server: Docker Engine - Community
 
 ---
 
-## 📌 Perbandingan
-
-* `docker info` = detail konfigurasi & status runtime Docker di host
-* `docker version` = info versi client & server
+Oke siap 🚀, aku jelasin step by step biar jelas banget apa yang terjadi dengan perintah-perintah itu.
 
 ---
 
+## 🔹 1. `docker images`
 
+👉 Fungsinya: **menampilkan daftar image lokal** (yang sudah ada di mesin kamu).
+Informasi yang ditampilkan biasanya:
 
-# ngambil image
+* **REPOSITORY** → nama image (contoh: `mongo`, `nginx`, `ubuntu`)
+* **TAG** → versi image (contoh: `4.1`, `latest`, `20.04`)
+* **IMAGE ID** → hash unik image
+* **CREATED** → kapan image dibuat (oleh pembuat image, bukan kapan kamu download)
+* **SIZE** → ukuran image
 
-docker images
-docker pull mongo:4.1
-docker images
+Contoh output awal (mungkin kosong kalau belum pernah pull image):
+
+```
+REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
+```
+
+---
+
+## 🔹 2. `docker pull mongo:4.1`
+
+👉 Fungsinya: **download image dari Docker registry (default: Docker Hub)** ke lokal.
+
+Detail prosesnya:
+
+* `mongo` = nama repository image → artinya kita ambil official image MongoDB.
+* `:4.1` = tag image → versi 4.1. Kalau tidak ditulis, defaultnya `:latest`.
+* Docker akan cek ke registry → download layer-layer image (layer bisa dibagi & dipakai ulang dengan image lain).
+* Setelah selesai, image tersimpan di lokal.
+
+Contoh output (disederhanakan):
+
+```
+4.1: Pulling from library/mongo
+Digest: sha256:0a1c1a3d85...
+Status: Downloaded newer image for mongo:4.1
+docker.io/library/mongo:4.1
+```
+
+---
+
+## 🔹 3. `docker images` (lagi setelah pull)
+
+👉 Sekarang, kalau kamu jalankan lagi, harusnya image `mongo:4.1` sudah ada di daftar.
+
+Contoh output:
+
+```
+REPOSITORY   TAG       IMAGE ID       CREATED        SIZE
+mongo        4.1       9c7a54a9a43c   3 years ago    361MB
+```
+
+---
 
 # buat container
 
