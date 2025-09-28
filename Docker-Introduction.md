@@ -1,3 +1,5 @@
+# Setelah Selesai Install Docker
+
 ## 🔹 `docker info`
 
 👉 Dipakai untuk menampilkan **informasi lengkap** tentang instalasi Docker di sistem kamu.
@@ -70,7 +72,7 @@ Server: Docker Engine - Community
 
 ---
 
-Oke siap 🚀, aku jelasin step by step biar jelas banget apa yang terjadi dengan perintah-perintah itu.
+# Mengambil Image Docker
 
 ---
 
@@ -128,7 +130,7 @@ mongo        4.1       9c7a54a9a43c   3 years ago    361MB
 
 ---
 
-# buat container
+# Membuat Container
 
 docker container ls
 docker container ls --all
@@ -139,6 +141,63 @@ docker container ls --all
 docker container create --name mongoserver1 mongo:4.1 (ERROR)
 docker container create --name mongoserver2 mongo:4.1
 docker container ls --all
+
+---
+
+## 🔹 1. `docker container ls`
+
+👉 Alias: `docker ps`
+
+* Menampilkan **container yang sedang berjalan** saja.
+* Kalau output kosong → artinya belum ada container jalan.
+
+Contoh output (awal, kosong):
+
+```
+CONTAINER ID   IMAGE   COMMAND   CREATED   STATUS   PORTS   NAMES
+```
+
+---
+
+## 🔹 2. `docker container ls --all`
+
+👉 Alias: `docker ps -a`
+
+* Menampilkan **SEMUA container** di sistem, baik yang sedang jalan maupun sudah berhenti (exited).
+* Jadi bisa lihat history container yang pernah dibuat.
+
+---
+
+## 🔹 3. `docker container create mongo:4.1`
+
+👉 Membuat container baru dari image `mongo:4.1`, **tanpa langsung menjalankannya**.
+
+* Container punya ID unik.
+* Status awal = `Created`.
+* Karena tidak pakai `--name`, maka Docker otomatis kasih nama random (misalnya `vigorous_wilson`).
+
+---
+
+## 🔹 4. `docker container create --name mongoserver1 mongo:4.1`
+
+👉 Sama dengan sebelumnya, tapi **kasih nama custom** (`mongoserver1`).
+
+* Ini memudahkan kamu untuk identifikasi container.
+* Status awal tetap = `Created`.
+
+---
+
+Kalau dicek pakai:
+
+```
+docker container ls
+# kosong (belum jalan)
+
+docker container ls --all
+# ada container status "Created"
+```
+
+---
 
 # jalankan container
 
