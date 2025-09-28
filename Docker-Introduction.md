@@ -187,11 +187,9 @@ docker container ls --all
 # ada container status "Created"
 ```
 
-selanjutnya buat lagi container :
+selanjutnya buat lagi container dengan nama yang sama , error gak? :
 
-docker container create --name mongoserver1 mongo:4.1 (E)
-
-docker container create --name mongoserver2 mongo:4.1
+docker container create --name mongoserver1 mongo:4.1
 
 docker container ls --all
 
