@@ -76,7 +76,7 @@ Server: Docker Engine - Community
 
 ---
 
-## 🔹 1. `docker images`
+## 🔹 `docker images`
 
 👉 Fungsinya: **menampilkan daftar image lokal** (yang sudah ada di mesin kamu).
 Informasi yang ditampilkan biasanya:
@@ -95,7 +95,7 @@ REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
 
 ---
 
-## 🔹 2. `docker pull mongo:4.1`
+## 🔹 `docker pull mongo:4.1`
 
 👉 Fungsinya: **download image dari Docker registry (default: Docker Hub)** ke lokal.
 
@@ -117,7 +117,7 @@ docker.io/library/mongo:4.1
 
 ---
 
-## 🔹 3. `docker images` (lagi setelah pull)
+## 🔹 `docker images` (lagi setelah pull)
 
 👉 Sekarang, kalau kamu jalankan lagi, harusnya image `mongo:4.1` sudah ada di daftar.
 
@@ -132,19 +132,9 @@ mongo        4.1       9c7a54a9a43c   3 years ago    361MB
 
 # Membuat Container
 
-docker container ls
-docker container ls --all
-docker container create mongo:4.1
-docker container create --name mongoserver1 mongo:4.1
-docker container ls
-docker container ls --all
-docker container create --name mongoserver1 mongo:4.1 (ERROR)
-docker container create --name mongoserver2 mongo:4.1
-docker container ls --all
-
 ---
 
-## 🔹 1. `docker container ls`
+## 🔹 `docker container ls`
 
 👉 Alias: `docker ps`
 
@@ -159,7 +149,7 @@ CONTAINER ID   IMAGE   COMMAND   CREATED   STATUS   PORTS   NAMES
 
 ---
 
-## 🔹 2. `docker container ls --all`
+## 🔹 `docker container ls --all`
 
 👉 Alias: `docker ps -a`
 
@@ -168,7 +158,7 @@ CONTAINER ID   IMAGE   COMMAND   CREATED   STATUS   PORTS   NAMES
 
 ---
 
-## 🔹 3. `docker container create mongo:4.1`
+## 🔹 `docker container create mongo:4.1`
 
 👉 Membuat container baru dari image `mongo:4.1`, **tanpa langsung menjalankannya**.
 
@@ -178,7 +168,7 @@ CONTAINER ID   IMAGE   COMMAND   CREATED   STATUS   PORTS   NAMES
 
 ---
 
-## 🔹 4. `docker container create --name mongoserver1 mongo:4.1`
+## 🔹 `docker container create --name mongoserver1 mongo:4.1`
 
 👉 Sama dengan sebelumnya, tapi **kasih nama custom** (`mongoserver1`).
 
@@ -197,14 +187,66 @@ docker container ls --all
 # ada container status "Created"
 ```
 
+selanjutnya buat lagi container :
+
+docker container create --name mongoserver1 mongo:4.1 (E)
+
+docker container create --name mongoserver2 mongo:4.1
+
+docker container ls --all
+
 ---
 
-# jalankan container
+# Menjalankan Container
 
-docker container start mongoserver1
-docker container ls
-docker container start mongoserver2
-docker container ls
+---
+
+## 🔹 `docker container start mongoserver1`
+
+👉 Fungsi: **menyalakan container** yang sebelumnya statusnya `Created` atau `Exited`.
+
+* Di sini, container `mongoserver1` (dari image `mongo:4.1`) dijalankan.
+* Tapi karena `docker start` **tidak attach ke log/output**, kamu tidak langsung lihat apa-apa di terminal.
+* Container jalan di background.
+
+---
+
+## 🔹 `docker container ls`
+
+👉 Alias: `docker ps`
+
+* Sekarang tampil container yang sedang **Running**.
+* Harusnya muncul `mongoserver1` dengan image `mongo:4.1`.
+* Kolom yang tampil:
+
+  * `CONTAINER ID`
+  * `IMAGE` → `mongo:4.1`
+  * `COMMAND` → entrypoint dari image MongoDB (biasanya `docker-entrypoint.sh mongod`)
+  * `STATUS` → `Up X seconds`
+  * `NAMES` → `mongoserver1`
+
+---
+
+## 🔹 `docker container start mongoserver2`
+
+👉 Sama, ini menyalakan container kedua (`mongoserver2`).
+
+* Jadi sekarang ada **dua container MongoDB** yang jalan **bersamaan**.
+* Bedanya: keduanya pakai port default MongoDB (27017) di dalam container, tapi karena kamu **belum publish port** (`-p 27017:27017`), maka mereka **tidak bentrok** dan hanya bisa diakses dari sesama container atau dari host via namespace tertentu.
+
+---
+
+## 🔹 `docker container ls`
+
+👉 Cek lagi container yang running.
+
+* Sekarang ada **dua container running**:
+
+  * `mongoserver1`
+  * `mongoserver2`
+* Status keduanya harus `Up ... seconds/minutes`.
+
+---
 
 # menghapus container
 
