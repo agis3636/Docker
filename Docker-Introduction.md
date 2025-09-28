@@ -248,17 +248,89 @@ docker container ls --all
 
 ---
 
-# menghapus container
+# Menghapus Container
 
-docker container rm mongoserver1
-docker container ls
-docker container stop mongoserver1
-docker container stop mongoserver1 mongoserver2
-docker container ls
-docker container rm mongoserver1
-docker container rm mongoserver1 mongoserver2
-docker container ls --all
-docker images
+---
+
+## 🔹 1. `docker container rm mongoserver1`
+
+👉 Perintah ini **hapus container** bernama `mongoserver1`.
+
+* **TAPI**: kalau container masih **running**, Docker tidak bisa hapus → muncul error:
+
+  ```
+  Error response from daemon: You cannot remove a running container ...
+  ```
+* Jadi container harus dihentikan dulu (`docker stop`) baru bisa dihapus.
+
+---
+
+## 🔹 2. `docker container ls`
+
+👉 Menampilkan container yang sedang **running**.
+
+* Karena sebelumnya `mongoserver1` masih jalan, dia masih akan muncul di sini.
+
+---
+
+## 🔹 3. `docker container stop mongoserver1`
+
+👉 **Menghentikan container** `mongoserver1`.
+
+* Status berubah dari `Up` → `Exited`.
+* Container masih ada di sistem, tapi tidak jalan.
+
+---
+
+## 🔹 4. `docker container stop mongoserver1 mongoserver2`
+
+👉 Menghentikan **dua container sekaligus** (`mongoserver1` dan `mongoserver2`).
+
+* Sekarang dua-duanya statusnya `Exited`.
+* Kalau sudah di-stop, container tidak akan muncul di `docker container ls` (karena itu hanya menampilkan yang running).
+
+---
+
+## 🔹 5. `docker container ls`
+
+👉 Menampilkan container yang running → hasilnya kosong, karena semua sudah dihentikan.
+
+---
+
+## 🔹 6. `docker container rm mongoserver1`
+
+👉 Sekarang bisa dihapus, karena status `mongoserver1` = Exited.
+
+* Container `mongoserver1` hilang dari sistem.
+
+---
+
+## 🔹 7. `docker container rm mongoserver1 mongoserver2`
+
+👉 Di sini:
+
+* `mongoserver1` sudah dihapus, jadi akan muncul warning/error kalau coba hapus lagi.
+* `mongoserver2` masih ada (status Exited), jadi berhasil dihapus.
+
+---
+
+## 🔹 8. `docker container ls --all`
+
+👉 Menampilkan semua container (Running, Exited, Created).
+
+* Karena `mongoserver1` & `mongoserver2` sudah dihapus, mereka tidak muncul lagi.
+* Tapi container lain (yang sebelumnya pernah dibuat) mungkin masih ada kalau belum dihapus.
+
+---
+
+## 🔹 9. `docker images`
+
+👉 Menampilkan **image lokal**.
+
+* Penting: `docker container rm` hanya hapus **container**, **image aslinya tetap ada**.
+* Jadi image `mongo:4.1` masih muncul di daftar images.
+
+---
 
 # membuka port untuk container
 
