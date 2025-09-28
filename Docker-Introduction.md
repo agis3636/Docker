@@ -34,8 +34,6 @@ Operating System: Ubuntu 22.04.3 LTS
 Architecture: x86_64
 ```
 
----
-
 ## 🔹 `docker version`
 
 👉 Dipakai untuk menampilkan **versi client & server** Docker.
@@ -74,8 +72,6 @@ Server: Docker Engine - Community
 
 # Mengambil Image Docker
 
----
-
 ## 🔹 `docker images`
 
 👉 Fungsinya: **menampilkan daftar image lokal** (yang sudah ada di mesin kamu).
@@ -92,8 +88,6 @@ Contoh output awal (mungkin kosong kalau belum pernah pull image):
 ```
 REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
 ```
-
----
 
 ## 🔹 `docker pull mongo:4.1`
 
@@ -115,8 +109,6 @@ Status: Downloaded newer image for mongo:4.1
 docker.io/library/mongo:4.1
 ```
 
----
-
 ## 🔹 `docker images` (lagi setelah pull)
 
 👉 Sekarang, kalau kamu jalankan lagi, harusnya image `mongo:4.1` sudah ada di daftar.
@@ -132,8 +124,6 @@ mongo        4.1       9c7a54a9a43c   3 years ago    361MB
 
 # Membuat Container
 
----
-
 ## 🔹 `docker container ls`
 
 👉 Alias: `docker ps`
@@ -147,16 +137,12 @@ Contoh output (awal, kosong):
 CONTAINER ID   IMAGE   COMMAND   CREATED   STATUS   PORTS   NAMES
 ```
 
----
-
 ## 🔹 `docker container ls --all`
 
 👉 Alias: `docker ps -a`
 
 * Menampilkan **SEMUA container** di sistem, baik yang sedang jalan maupun sudah berhenti (exited).
 * Jadi bisa lihat history container yang pernah dibuat.
-
----
 
 ## 🔹 `docker container create mongo:4.1`
 
@@ -166,16 +152,12 @@ CONTAINER ID   IMAGE   COMMAND   CREATED   STATUS   PORTS   NAMES
 * Status awal = `Created`.
 * Karena tidak pakai `--name`, maka Docker otomatis kasih nama random (misalnya `vigorous_wilson`).
 
----
-
 ## 🔹 `docker container create --name mongoserver1 mongo:4.1`
 
 👉 Sama dengan sebelumnya, tapi **kasih nama custom** (`mongoserver1`).
 
 * Ini memudahkan kamu untuk identifikasi container.
 * Status awal tetap = `Created`.
-
----
 
 Kalau dicek pakai:
 
@@ -197,8 +179,6 @@ docker container ls --all
 
 # Menjalankan Container
 
----
-
 ## 🔹 `docker container start mongoserver1`
 
 👉 Fungsi: **menyalakan container** yang sebelumnya statusnya `Created` atau `Exited`.
@@ -206,8 +186,6 @@ docker container ls --all
 * Di sini, container `mongoserver1` (dari image `mongo:4.1`) dijalankan.
 * Tapi karena `docker start` **tidak attach ke log/output**, kamu tidak langsung lihat apa-apa di terminal.
 * Container jalan di background.
-
----
 
 ## 🔹 `docker container ls`
 
@@ -223,16 +201,12 @@ docker container ls --all
   * `STATUS` → `Up X seconds`
   * `NAMES` → `mongoserver1`
 
----
-
 ## 🔹 `docker container start mongoserver2`
 
 👉 Sama, ini menyalakan container kedua (`mongoserver2`).
 
 * Jadi sekarang ada **dua container MongoDB** yang jalan **bersamaan**.
 * Bedanya: keduanya pakai port default MongoDB (27017) di dalam container, tapi karena kamu **belum publish port** (`-p 27017:27017`), maka mereka **tidak bentrok** dan hanya bisa diakses dari sesama container atau dari host via namespace tertentu.
-
----
 
 ## 🔹 `docker container ls`
 
@@ -248,8 +222,6 @@ docker container ls --all
 
 # Menghapus Container
 
----
-
 ## 🔹 `docker container rm mongoserver1`
 
 👉 Perintah ini **hapus container** bernama `mongoserver1`.
@@ -261,15 +233,11 @@ docker container ls --all
   ```
 * Jadi container harus dihentikan dulu (`docker stop`) baru bisa dihapus.
 
----
-
 ## 🔹 `docker container ls`
 
 👉 Menampilkan container yang sedang **running**.
 
 * Karena sebelumnya `mongoserver1` masih jalan, dia masih akan muncul di sini.
-
----
 
 ## 🔹 `docker container stop mongoserver1`
 
@@ -278,8 +246,6 @@ docker container ls --all
 * Status berubah dari `Up` → `Exited`.
 * Container masih ada di sistem, tapi tidak jalan.
 
----
-
 ## 🔹 `docker container stop mongoserver1 mongoserver2`
 
 👉 Menghentikan **dua container sekaligus** (`mongoserver1` dan `mongoserver2`).
@@ -287,21 +253,15 @@ docker container ls --all
 * Sekarang dua-duanya statusnya `Exited`.
 * Kalau sudah di-stop, container tidak akan muncul di `docker container ls` (karena itu hanya menampilkan yang running).
 
----
-
 ## 🔹 `docker container ls`
 
 👉 Menampilkan container yang running → hasilnya kosong, karena semua sudah dihentikan.
-
----
 
 ## 🔹 `docker container rm mongoserver1`
 
 👉 Sekarang bisa dihapus, karena status `mongoserver1` = Exited.
 
 * Container `mongoserver1` hilang dari sistem.
-
----
 
 ## 🔹 `docker container rm mongoserver1 mongoserver2`
 
@@ -310,16 +270,12 @@ docker container ls --all
 * `mongoserver1` sudah dihapus, jadi akan muncul warning/error kalau coba hapus lagi.
 * `mongoserver2` masih ada (status Exited), jadi berhasil dihapus.
 
----
-
 ## 🔹 `docker container ls --all`
 
 👉 Menampilkan semua container (Running, Exited, Created).
 
 * Karena `mongoserver1` & `mongoserver2` sudah dihapus, mereka tidak muncul lagi.
 * Tapi container lain (yang sebelumnya pernah dibuat) mungkin masih ada kalau belum dihapus.
-
----
 
 ## 🔹 `docker images`
 
@@ -332,8 +288,6 @@ docker container ls --all
 
 # Membuka Port Mapping untuk Container di Docker
 
----
-
 ## 🔹 `docker container create --name mongoserver1 -p 8080:27017 mongo:4.1`
 
 * Membuat container dari image `mongo:4.1`.
@@ -345,8 +299,6 @@ docker container ls --all
 * Jadi kalau kamu akses `localhost:8080`, sebenarnya request diteruskan ke MongoDB dalam container di port `27017`.
 * Status awal: `Created` (belum jalan).
 
----
-
 ## 🔹 `docker container create --name mongoserver2 -p 8181:27017 mongo:4.1`
 
 * Sama, tapi nama `mongoserver2` dan port mapping ke host `8181`.
@@ -356,28 +308,20 @@ docker container ls --all
   * `mongoserver2` → MongoDB bisa diakses di `localhost:8181`.
 * Ini penting, karena **dua container tidak bisa share port host yang sama**.
 
----
-
 ## 🔹 `docker container ls --all`
 
 * Menampilkan semua container (running, stopped, created).
 * Harusnya ada 2 container (`mongoserver1` & `mongoserver2`), status `Created`.
-
----
 
 ## 🔹 `docker container start mongoserver1`
 
 * Menyalakan container `mongoserver1`.
 * Sekarang MongoDB instance pertama jalan → bisa diakses di `localhost:8080`.
 
----
-
 ## 🔹 `docker container start mongoserver2`
 
 * Menyalakan container `mongoserver2`.
 * Sekarang MongoDB instance kedua jalan → bisa diakses di `localhost:8181`.
-
----
 
 ## 🔹 `docker container ls`
 
@@ -389,15 +333,11 @@ docker container ls --all
 
 Artinya host-port 8080 & 8181 terbuka ke luar, diarahkan ke port 27017 di container masing-masing.
 
----
-
 ## 🔹 `docker container stop mongoserver1`
 
 * Menghentikan container `mongoserver1`.
 * Sekarang hanya `mongoserver2` yang masih jalan.
 * MongoDB instance di `localhost:8080` tidak bisa diakses lagi, tapi `localhost:8181` masih aktif.
-
----
 
 ## 📌 Ringkasan Konsep
 
@@ -409,19 +349,13 @@ Artinya host-port 8080 & 8181 terbuka ke luar, diarahkan ke port 27017 di contai
 
 # Menghapus Image (coba jalankan lagi containernya untuk praktek hapus image)
 
-Oke 🔥, sekarang kita bahas tahap **hapus image**. Aku jelasin runtut sesuai urutan command kamu 👇
-
----
-
 ## 🔹 `docker images`
 
 👉 Menampilkan semua image yang ada di lokal.
 
 * Harusnya ada `mongo:4.1` (image MongoDB yang sebelumnya kamu pull & pakai buat container).
 
----
-
-## 🔹 `docker images rm mongo:4.1` (ERROR)
+## 🔹 `docker images rm mongo:4.1`
 
 👉 Tujuannya: hapus image `mongo:4.1`.
 
@@ -433,15 +367,11 @@ Oke 🔥, sekarang kita bahas tahap **hapus image**. Aku jelasin runtut sesuai u
   Error response from daemon: conflict: unable to remove repository reference "mongo:4.1" (must be forced) - container <id> is using its referenced image
   ```
 
----
-
 ## 🔹 `docker container stop mongoserver1`
 
 👉 Hentikan container `mongoserver1`.
 
 * Status berubah dari `Up` → `Exited`.
-
----
 
 ## 🔹 `docker container stop mongoserver2`
 
@@ -449,7 +379,6 @@ Oke 🔥, sekarang kita bahas tahap **hapus image**. Aku jelasin runtut sesuai u
 
 * Sekarang semua container MongoDB berhenti.
 
----
 
 ## 🔹 `docker container rm mongoserver1`
 
@@ -457,15 +386,11 @@ Oke 🔥, sekarang kita bahas tahap **hapus image**. Aku jelasin runtut sesuai u
 
 * Container hilang dari daftar.
 
----
-
 ## 🔹 `docker container rm mongoserver2`
 
 👉 Hapus container `mongoserver2`.
 
 * Sekarang semua container MongoDB sudah dihapus.
-
----
 
 ## 🔹 `docker container ls`
 
@@ -473,15 +398,11 @@ Oke 🔥, sekarang kita bahas tahap **hapus image**. Aku jelasin runtut sesuai u
 
 * Hasilnya kosong (karena semua sudah dihapus).
 
----
-
 ## 🔹 `docker container ls --all`
 
 👉 Menampilkan semua container (running, stopped, created).
 
 * Hasilnya juga kosong, karena `mongoserver1` & `mongoserver2` sudah dihapus.
-
----
 
 ## 🔹 `docker images rm mongo:4.1`
 
@@ -489,8 +410,6 @@ Oke 🔥, sekarang kita bahas tahap **hapus image**. Aku jelasin runtut sesuai u
 
 * Tidak ada container yang memakai image tersebut lagi.
 * Setelah ini, `docker images` tidak akan menampilkan `mongo:4.1` lagi.
-
----
 
 ## 📌 Ringkasan konsep
 
