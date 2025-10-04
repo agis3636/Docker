@@ -12,3 +12,10 @@ docker container logs -f contohredis1
 exit = ctrl+c
 
 container exec :
+docker container exec -i -t contohredis1 /bin/bash
+root@343535252 > ls
+root@343535252 > cd /
+root@343535252 > ls
+root@343535252 > redis-cli
+127.0.0.1:6379 > get eko "Hello World!!!"
+127.0.0.1:6379 > get eko
