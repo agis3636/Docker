@@ -22,7 +22,7 @@ root@343535252 > redis-cli
 127.0.0.1:6379 > exit
 root@343535252 > exit
 
-container port, melakukan port forwarding dengan nginx :
+container port, melakukan port forwarding dengan nginx + exec :
 docker image pull nginx:latest
 docker container create --name contohnginx1 --publish 8080:80 nginx:latest
 docker container ls -a
@@ -30,3 +30,9 @@ docker container start contohnginx1
 docker container ls -a
 docker container stop contohnginx1
 docker container ls -a
+
+docker exec -it contohnginx1 /bin/bash
+docker exec -it contohnginx1 /bin/sh
+/usr/share/nginx/html
+
+/usr/local/apache2/htdocs/
