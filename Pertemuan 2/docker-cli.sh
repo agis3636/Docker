@@ -39,3 +39,16 @@ docker exec -it contohnginx1 /bin/sh
 /usr/share/nginx/html
 
 /usr/local/apache2/htdocs/
+
+---
+
+docker container env :
+
+docker image pull mongo:latest
+docker container create --name contohmongo1 --publish 9999:27017 --env MONGO_INITDB_ROOT_USERNAME=agis --env MONGO_INITDB_ROOT_PASSWORD=agis mongo:latest
+
+---
+
+docker container stats :
+
+jalankan semua container sebanyak banyaknya
