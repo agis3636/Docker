@@ -39,10 +39,10 @@ atau
 docker container ls -a
 ```
 
-### 5. `docker container rm`
+### 5. `docker container create --name namecontainer --publish 8080:80 image:tag`
 
 ✅ Bisa disingkat jadi:
 
 ```bash
-docker rm <nama_container>
+docker container create --name namecontainer -p 8080:80 image:tag
 ```
