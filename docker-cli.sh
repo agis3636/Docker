@@ -70,3 +70,4 @@ jalankan semua container sebanyak banyaknya
 
 # Docker Container Resource Limit (memory | cpu) :
 
+  docker container create --name smallnginx --publish 8080:80 --memory 100m --cpus 0.5 nginx:latest
