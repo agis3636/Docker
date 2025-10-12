@@ -23,8 +23,10 @@ root@343535252 > redis-cli
 127.0.0.1:6379 > get name
 127.0.0.1:6379 > exit
 root@343535252 > exit
+
 ---
-container port, melakukan port forwarding dengan nginx + exec :
+
+## container port, melakukan port forwarding dengan nginx + exec :
 
 docker image pull nginx:latest
 docker container create --name contohnginx1 --publish 8080:80 nginx:latest
@@ -42,13 +44,13 @@ docker exec -it contohnginx1 /bin/sh
 
 ---
 
-docker container env :
+### docker container env :
 
 docker image pull mongo:latest
 docker container create --name contohmongo1 --publish 9999:27017 --env MONGO_INITDB_ROOT_USERNAME=agis --env MONGO_INITDB_ROOT_PASSWORD=agis mongo:latest
 
 ---
 
-docker container stats :
+# docker container stats :
 
 jalankan semua container sebanyak banyaknya
