@@ -65,3 +65,8 @@ coba diulang lagi nanti dia tidak akan download ulang
 
 jalankan semua container sebanyak banyaknya
   docker container stats
+
+---
+
+# Docker Container Resource Limit (memory | cpu) :
+
