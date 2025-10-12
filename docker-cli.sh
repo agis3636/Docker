@@ -1,4 +1,4 @@
-# Docker Imaage
+# Docker Image
 
   docker images ls
   docker image pull redis:latest
