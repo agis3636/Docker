@@ -39,15 +39,10 @@ atau
 docker container ls -a
 ```
 
-📌 Keterangan:
+### 5. `docker container rm`
 
-* `docker ps` = sama dengan `docker container ls`
-* Tambah `-a` = tampilkan semua container (running + stopped).
+✅ Bisa disingkat jadi:
 
-## 🔑 Kesimpulan singkat:
-
-* `docker container stop` → `docker stop`
-* `docker container rm` → `docker rm`
-* `docker image rm` → `docker rmi`
-* `docker container ls` → `docker ps`
-* `docker container ls --all` → `docker ps -a`
+```bash
+docker rm <nama_container>
+```
