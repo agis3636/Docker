@@ -58,6 +58,7 @@ coba diulang lagi nanti dia tidak akan download ulang
 
   docker image pull mongo:latest
   docker container create --name contohmongo1 --publish 9999:27017 --env MONGO_INITDB_ROOT_USERNAME=agis --env MONGO_INITDB_ROOT_PASSWORD=agis mongo:latest
+connect ke mongodb client
 
 ---
 
@@ -80,6 +81,19 @@ jalankan semua container sebanyak banyaknya
 # Docker Container BIND NOUNTS :
 
   docker image pull mongo:latest
-  docker container create --name contohmongo1 --mount "type=bind,source=/Users/name/data,destination=/data/db" --publish 9999:27017 --env MONGO_INITDB_ROOT_USERNAME=agis --env MONGO_INITDB_ROOT_PASSWORD=agis mongo:latest
+buat dulu directory untuk simpan data di laptopnya
+  docker container create --name mongodata --mount "type=bind,source=/Users/name/data,destination=/data/db" --publish 9999:27017 --env MONGO_INITDB_ROOT_USERNAME=agis --env MONGO_INITDB_ROOT_PASSWORD=agis mongo:latest
+  docker container ls -a
+  docker container start moongodata
+  docker container stats
+connect ke mongodb client
+buat database dan tabel di mongodb client
+selanjutnya buka directory di laptop, dan data dari docker container akan ada di laptop
 
+delete container
+maka datanya akan tetap aman di laptop
+
+buat lagi container dengan environtment yang sama
+  docker container create --name mongodata --mount "type=bind,source=/Users/name/data,destination=/data/db" --publish 9999:27017 --env MONGO_INITDB_ROOT_USERNAME=agis --env MONGO_INITDB_ROOT_PASSWORD=agis mongo:latest
+cek ke mongodb client dan data akan tetap ada
 ---
