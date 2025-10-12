@@ -68,9 +68,18 @@ jalankan semua container sebanyak banyaknya
 
 ---
 
-# Docker Container Resource Limit (memory | cpu) :
+# Docker Container Resource Limit (MEMORY | CPUS) :
 
   docker container create --name smallnginx --publish 8080:80 --memory 100m --cpus 0.5 nginx:latest
   docker container ls -a
   docker container start smallnginx
   docker container stats
+
+---
+
+# Docker Container BIND NOUNTS :
+
+  docker image pull mongo:latest
+  docker container create --name contohmongo1 --mount "type=bind,source=/Users/name/data,destination=/data/db" --publish 9999:27017 --env MONGO_INITDB_ROOT_USERNAME=agis --env MONGO_INITDB_ROOT_PASSWORD=agis mongo:latest
+
+---
