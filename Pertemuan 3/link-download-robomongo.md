@@ -2,12 +2,9 @@ https://robomongo.org/download-os.php?useremail=asyelom%40gmail.com&vid=NRGWIEXb
 
 ## MediaFire
 
-```bash
 [Pencet Di Sini](https://www.mediafire.com/folder/1if7ofcb1qhqc/robomongo)
-```
+
 
 ## Google Drive
 
-```bash
-https://drive.google.com/drive/folders/1qzHiKifTvZY-JY5OMySRyGfj8Wptzoby?usp=sharing
-```
+[Pencet Di Sini](https://drive.google.com/drive/folders/1qzHiKifTvZY-JY5OMySRyGfj8Wptzoby?usp=sharing)
