@@ -1,8 +1,8 @@
-## Langkah-langkah penginstalan manual untuk versi WSL yang lebih lama
+## Langkah-langkah penginstalan manual WSL
 
-```bash
+
 [docker stop <nama_container>](https://learn.microsoft.com/id-id/windows/wsl/install-manual)
-```
+
 
 ## Perintah dasar untuk WSL
 
