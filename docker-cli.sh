@@ -49,7 +49,8 @@ coba diulang lagi nanti dia tidak akan download ulang
   docker exec -it contohnginx1 /bin/bash
   docker exec -it contohnginx1 /bin/sh
     /usr/share/nginx/html
-    
+
+TUGAS RUNNING DOCKER PORT FORWARDING + EXEC DENGAN APACHE !!!
     /usr/local/apache2/htdocs/
 
 ---
