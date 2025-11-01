@@ -84,7 +84,9 @@ jalankan semua container sebanyak banyaknya
   docker image pull mongo:latest
 buat dulu directory untuk simpan data di laptopnya
   docker container create --name mongodata --mount "type=bind,source=/Users/name/data,destination=/data/db" --publish 9999:27017 --env MONGO_INITDB_ROOT_USERNAME=agis --env MONGO_INITDB_ROOT_PASSWORD=agis mongo:latest
-cek foldernya pasti ada isinya
+
+selanjutnya buka directory di laptop, dan data dari docker container akan ada di laptop
+
   docker container ls
   docker container start moongodata
   docker container ls
@@ -92,9 +94,8 @@ cek foldernya pasti ada isinya
 connect ke mongodb client
 buat database dan tabel di mongodb client
 
-selanjutnya buka directory di laptop, dan data dari docker container akan ada di laptop
 
-berikutnya coba delete container
+berikutnya coba stop dan delete container
 maka datanya akan tetap aman di laptop
 
 buat lagi container dengan environtment yang sama
