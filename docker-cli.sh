@@ -84,6 +84,7 @@ jalankan semua container sebanyak banyaknya
   docker image pull mongo:latest
 buat dulu directory untuk simpan data di laptopnya
   docker container create --name mongodata --mount "type=bind,source=/Users/name/data,destination=/data/db" --publish 9999:27017 --env MONGO_INITDB_ROOT_USERNAME=agis --env MONGO_INITDB_ROOT_PASSWORD=agis mongo:latest
+cek foldernya pasti ada isinya
   docker container ls
   docker container start moongodata
   docker container ls
