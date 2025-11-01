@@ -141,7 +141,7 @@ buat dulu directory baru buat backup. directory ini di buat untuk source
 # Docker VOLUME BACKUP otomatis :
 
 stop dulu container mongonya
-  docker container run --rm --name ubuntubackup --mount "type=bind,source=/directory-baru,destination=/backup" --mount "type=volume,source=mongovolume,destination=/data" ubuntu:latest
-
+  docker container run --rm --name ubuntubackup --mount "type=bind,source=/directory-baru,destination=/backup" --mount "type=volume,source=mongovolume,destination=/data" ubuntu:latest tar cvf /backup/backupdata2.tar.gz /data/
+kalo udah selesai cek containernya. ada ga container ubuntu? pasti hilang
 
 
