@@ -82,8 +82,8 @@ jalankan semua container sebanyak banyaknya
 # Docker Container BIND NOUNTS :
 
   docker image pull mongo:latest
-buat dulu directory untuk simpan data di laptopnya
-  docker container create --name mongodata --mount "type=bind,source=/Users/name/data,destination=/data/db" --publish 9999:27017 --env MONGO_INITDB_ROOT_USERNAME=agis --env MONGO_INITDB_ROOT_PASSWORD=agis mongo:latest
+buat dulu directory untuk simpan data di host/pc. directory ini di gunakan untuk source
+  docker container create --name mongodata --mount "type=bind,source=/direktory-di-pc,destination=/data/db" --publish 9999:27017 --env MONGO_INITDB_ROOT_USERNAME=agis --env MONGO_INITDB_ROOT_PASSWORD=agis mongo:latest
 
 selanjutnya buka directory di laptop, dan data dari docker container akan ada di laptop
 
@@ -99,7 +99,7 @@ berikutnya coba stop dan delete container
 maka datanya akan tetap aman di laptop
 
 buat lagi container dengan environtment yang sama
-  docker container create --name mongodata --mount "type=bind,source=/Users/name/data,destination=/data/db" --publish 9999:27017 --env MONGO_INITDB_ROOT_USERNAME=agis --env MONGO_INITDB_ROOT_PASSWORD=agis mongo:latest
+  docker container create --name mongodata --mount "type=bind,source=/directory-di-pc,destination=/data/db" --publish 9999:27017 --env MONGO_INITDB_ROOT_USERNAME=agis --env MONGO_INITDB_ROOT_PASSWORD=agis mongo:latest
 cek ke mongodb client dan data akan tetap ada
 
 ---
@@ -119,3 +119,9 @@ connect ke mongodb client
   docker container stop mongodatavolume
   docker container rm mongodatavolume
 
+# Docker VOLUME BACKUP :
+
+  docker container stop mongodatavolume
+buat dulu directory baru buat backup. directory ini di buat untuk source
+  docker container create --name nginxbackup --mount "type=bind,source=/directory-baru,destination=/backup" --mount "type=volume,source=mongovolume,destination=/data" nginx:latest
+  docker container start nginxbackup
