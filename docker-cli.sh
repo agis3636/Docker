@@ -110,3 +110,12 @@ cek ke mongodb client dan data akan tetap ada
   docker volume create mongovolume
   docker volume ls
   docker volume rm mongovolume
+
+  docker container create --name mongodatavolume --mount "type=volume,source=mongovolume,destination=/data/db" --publish 8888:27017 --env MONGO_INITDB_ROOT_USERNAME=agis --env MONGO_INITDB_ROOT_PASSWORD=agis mongo:latest
+  docker container start mongodatavolume
+
+connect ke mongodb client
+
+  docker container stop mongodatavolume
+  docker container rm mongodatavolume
+
