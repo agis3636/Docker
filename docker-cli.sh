@@ -119,9 +119,29 @@ connect ke mongodb client
   docker container stop mongodatavolume
   docker container rm mongodatavolume
 
-# Docker VOLUME BACKUP :
+# Docker VOLUME BACKUP manual :
 
   docker container stop mongodatavolume
 buat dulu directory baru buat backup. directory ini di buat untuk source
   docker container create --name nginxbackup --mount "type=bind,source=/directory-baru,destination=/backup" --mount "type=volume,source=mongovolume,destination=/data" nginx:latest
   docker container start nginxbackup
+  docker container exec -i -t nginxbackup /bin/bash
+    root@e96282473126:/# ls -lah
+    root@e96282473126:/# cd /data/
+    root@e96282473126:/data# ls -lah
+    root@e96282473126:/data# cd /backup/
+    root@e96282473126:/backup# ls -lah
+    root@e96282473126:/backup# tar cvf /backup/backupdata.tar.gz /data/
+    root@e96282473126:/backup# ls
+    root@e96282473126:/backup# exit
+  docker container stop nginxbackup 
+  docker container rm nginxbackup 
+  docker container start mongodatavolume
+
+# Docker VOLUME BACKUP otomatis :
+
+stop dulu container mongonya
+  docker container run --rm --name ubuntubackup --mount "type=bind,source=/directory-baru,destination=/backup" --mount "type=volume,source=mongovolume,destination=/data" ubuntu:latest
+
+
+
