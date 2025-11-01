@@ -103,3 +103,10 @@ buat lagi container dengan environtment yang sama
 cek ke mongodb client dan data akan tetap ada
 
 ---
+
+# Docker VOLUME :
+
+  docker volume ls
+  docker volume create mongovolume
+  docker volume ls
+  docker volume rm mongovolume
