@@ -25,13 +25,13 @@ coba diulang lagi nanti dia tidak akan download ulang
 # Docker Container EXEC :
 
   docker container exec -i -t contohredis1 /bin/bash
-    root@343535252 > ls
-    root@343535252 > cd /
-    root@343535252 > ls
-    root@343535252 > redis-cli
-      127.0.0.1:6379 > set name "Hello World!!!"
-      127.0.0.1:6379 > get name
-      127.0.0.1:6379 > exit
+    root@343535252:/data# ls
+    root@343535252:/data# cd /
+    root@343535252:/# ls
+    root@343535252:/# redis-cli
+      127.0.0.1:6379> set name "Hello World!!!"
+      127.0.0.1:6379> get name
+      127.0.0.1:6379> exit
     root@343535252 > exit
 
 ---
