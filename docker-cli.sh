@@ -186,4 +186,8 @@ cek log
   docker network inspect namanetwork
 
 # Docker PRUNE :
-  
+  docker image prune
+  docker container prune
+  docker network prune
+  docker volume prune
+  docker system prune
