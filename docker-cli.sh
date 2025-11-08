@@ -165,7 +165,7 @@ kalo udah selesai cek containernya. ada ga container ubuntu? pasti hilang
 
 Dan kalau kamu pengin skip login, tambahkan di atas:
 
-  --env ME_CONFIG_BASICAUTH=false
+"  --env ME_CONFIG_BASICAUTH=false "
 
 # Menghapus/disconnect Container dari NETWORK :
 
