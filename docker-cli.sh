@@ -153,7 +153,16 @@ kalo udah selesai cek containernya. ada ga container ubuntu? pasti hilang
 
 # Docker Container NETWORK :
 
+  docker network create --driver namadriver namanetwork
+  docker network ls
+  
   docker container create --name namacontainer --network namanetwork image:tag
   docker container create --name contohmongodb --network mongonetwork --env MONGO_INITDB_ROOT_USERNAME=agis --env MONGO_INITDB_ROOT_PASSWORD=agis mongo:latest
   docker pull mongo-express:latest
-  docker container create --name contohmongoexpress --network mongonetwork --publish 9999:27017 --env ME_CONFIG_MONGODB_URL="mongodb://agis:agis@namacontainer:27017/" mongo-express:latest
+  docker container create --name contohmongoexpress --network mongonetwork --publish 8081:8081 --env ME_CONFIG_MONGODB_URL="mongodb://agis:agis@namacontainer:27017/" mongo-express:latest
+  docker container start contohmongodb
+  docker container start contohmongoexpress
+
+# Menghapus Container dari NETWORK :
+
+  docker network disconnect namanetwork namacontainer
