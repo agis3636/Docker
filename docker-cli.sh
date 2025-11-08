@@ -156,13 +156,26 @@ kalo udah selesai cek containernya. ada ga container ubuntu? pasti hilang
   docker network create --driver namadriver namanetwork
   docker network ls
   
-  docker container create --name namacontainer --network namanetwork image:tag
+  docker container create --name namacontainer --network mongonetwork image:tag
   docker container create --name contohmongodb --network mongonetwork --env MONGO_INITDB_ROOT_USERNAME=agis --env MONGO_INITDB_ROOT_PASSWORD=agis mongo:latest
   docker pull mongo-express:latest
   docker container create --name contohmongoexpress --network mongonetwork --publish 8081:8081 --env ME_CONFIG_MONGODB_URL="mongodb://agis:agis@namacontainer:27017/" mongo-express:latest
   docker container start contohmongodb
   docker container start contohmongoexpress
 
-# Menghapus Container dari NETWORK :
+Dan kalau kamu pengin skip login, tambahkan di atas:
+
+  --env ME_CONFIG_BASICAUTH=false
+
+# Menghapus/disconnect Container dari NETWORK :
 
   docker network disconnect namanetwork namacontainer
+coba hapus container contohmongodb dari network mongonetwork
+
+cek log
+  docker container logs namacontainer
+
+# Menambahkan/connect Container dari NETWORK :
+
+  docker network connect namanetwork namacontainer
+
