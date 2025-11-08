@@ -35,4 +35,6 @@ build docker di terminal
   docker image inspect agis3636/command
   docker container create --name command agis3636/command
   docker container start command
+  docker container ls -a | grep command
   docker container logs command
+  
