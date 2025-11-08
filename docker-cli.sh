@@ -144,4 +144,11 @@ stop dulu container mongonya
   docker container run --rm --name ubuntubackup --mount "type=bind,source=/directory-baru,destination=/backup" --mount "type=volume,source=mongovolume,destination=/data" ubuntu:latest tar cvf /backup/backupdata2.tar.gz /data/
 kalo udah selesai cek containernya. ada ga container ubuntu? pasti hilang
 
+# Docker NETWORK :
 
+  docker network ls
+  docker network create --driver namadriver namanetwork
+  docker network ls
+  docker network rm namanetwork
+
+# Docker Container NETWORK :
