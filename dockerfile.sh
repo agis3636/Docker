@@ -98,5 +98,41 @@ buat agis.txt areta.txt dll sampai banyak
   ADD text/*.txt hello
 
   CMD cat "/hello/agis.txt"
+  ---------------
 build docker di terminal
   docker build -t agis3636/command command
+
+  docker container create --name command agis3636/command
+  docker container start command
+  docker container logs command
+
+  ----------------------------------------------------------------------------------
+
+  # COPY INSTRUCTION
+buat directory add dan di dalam nya ada Dockerfile
+lalu buat directory text di dalam directory add
+buat agis.txt areta.txt dll sampai banyak
+  ---------------
+  FROM alpine:3
+
+  RUN mkdir hello
+  ADD text/agis.txt hello
+  ADD text/areta.txt hello
+  ADD text/agis.txt hello
+  ADD text/areta.txt hello
+
+  CMD cat "/hello/agis.txt"
+  ---------------
+  FROM alpine:3
+
+  RUN mkdir hello
+  ADD text/*.txt hello
+
+  CMD cat "/hello/agis.txt"
+  ---------------
+build docker di terminal
+  docker build -t agis3636/command command
+
+  docker container create --name command agis3636/command
+  docker container start command
+  docker container logs command
