@@ -57,3 +57,13 @@ coba start 3 x lalu liat logs nya psti di logs sesuai dengan apa yang di start
 ----------------------------------------------------------------------------------
 
   # LABEL INSTRUCTION
+edit file Dockerfile di dalam directory
+  FROM alpine:3
+
+  LABEL author="Muhamad Agis"
+  LABEL company="PT.Maju Mundur Tersakiti" website="https://archtech.my.id"
+
+  RUN mkdir hello
+  RUN echo "hello world" > "hello/world.txt"
+  
+  CMD cat "hello/world.txt"
