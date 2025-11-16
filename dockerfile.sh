@@ -41,9 +41,19 @@ edit file Dockerfile di dalam directory
 
 build docker di terminal
   docker build -t agis3636/command command
+
+inspect
+  docker image inspect namaimage
   docker image inspect agis3636/command
+  
   docker container create --name command agis3636/command
   docker container start command
+  docker container ls (ga ada karna dia otomatis mati)
   docker container ls -a | grep command
   docker container logs command
   
+coba start 3 x lalu liat logs nya psti di logs sesuai dengan apa yang di start
+
+----------------------------------------------------------------------------------
+
+  # LABEL INSTRUCTION
