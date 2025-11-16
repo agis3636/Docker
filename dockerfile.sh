@@ -126,3 +126,10 @@ build docker di terminal
   docker container create --name command agis3636/command
   docker container start command
   docker container logs command
+
+  ----------------------------------------------------------------------------------
+
+  # DOCKERIGNORE File
+buat directory ignore dan di dalam nya ada Dockerfile dan .dockerignore dan directory text
+lalu didalam text ada app.log, sample.log, world.txt, directory temp
+di dalam temp ada sample.txt
