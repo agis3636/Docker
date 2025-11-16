@@ -133,3 +133,22 @@ build docker di terminal
 buat directory ignore dan di dalam nya ada Dockerfile dan .dockerignore dan directory text
 lalu didalam text ada app.log, sample.log, world.txt, directory temp
 di dalam temp ada sample.txt
+
+edit .dockerignore=
+  text/*.log
+  text/temp
+  ---------------
+edit .Dockerfile=
+  FROM alpine:3
+
+  RUN mkdir hello
+  COPY text/* hello
+
+  CMD ls -l hello
+    ---------------
+build docker di terminal
+  docker build -t agis3636/command command
+
+  docker container create --name command agis3636/command
+  docker container start command
+  docker container logs command
