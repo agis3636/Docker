@@ -13,11 +13,15 @@ edit file Dockerfile di dalam directory
   FROM alpine:3
 
   RUN mkdir hello
-  Run echo "hello world" > "hello/world.txt"
+  RUN echo "hello world" > "hello/world.txt"
   RUN cat "hello/world.txt"
 
 build docker di terminal
   docker build -t agis3636/run run
+
+build dengan progress dan no cache
+  docker image rm namaimage
+  
   docker build -t agis3636/run run --progress=plain --no-cache
   docker image ls | grep agis3636
 
@@ -26,7 +30,7 @@ edit file Dockerfile di dalam directory
   FROM alpine:3
 
   RUN mkdir hello
-  Run echo "hello world" > "hello/world.txt"
+  RUN echo "hello world" > "hello/world.txt"
   
   CMD cat "hello/world.txt"
 
