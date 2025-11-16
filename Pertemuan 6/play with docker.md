@@ -49,8 +49,6 @@ Karena:
 * Worker **dibatasi** (hanya eksekusi task Swarm)
 * Semua perintah Docker dasar (images, containers, build, compose) **jalan normal di manager**
 
----
-
 # 🔥 Fitur yang bisa kamu pelajari dari **manager**
 
 ### **1. CRUD Images**
@@ -91,8 +89,6 @@ Karena:
 * `docker compose down`
 
 Semua ini **tidak butuh worker, tidak butuh swarm**.
-
----
 
 # ❌ Worker node tidak cocok buat belajar Docker
 
