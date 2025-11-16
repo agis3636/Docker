@@ -67,3 +67,10 @@ edit file Dockerfile di dalam directory
   RUN echo "hello world" > "hello/world.txt"
   
   CMD cat "hello/world.txt"
+  
+build docker di terminal
+  docker build -t agis3636/command command
+
+inspect
+  docker image inspect namaimage
+  docker image inspect agis3636/command
