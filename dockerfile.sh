@@ -116,19 +116,9 @@ buat agis.txt areta.txt dll sampai banyak
   FROM alpine:3
 
   RUN mkdir hello
-  ADD text/agis.txt hello
-  ADD text/areta.txt hello
-  ADD text/agis.txt hello
-  ADD text/areta.txt hello
+  COPY text/*.txt hello
 
-  CMD cat "/hello/agis.txt"
-  ---------------
-  FROM alpine:3
-
-  RUN mkdir hello
-  ADD text/*.txt hello
-
-  CMD cat "/hello/agis.txt"
+  CMD cat "/hello/areta.txt"
   ---------------
 build docker di terminal
   docker build -t agis3636/command command
