@@ -178,7 +178,38 @@ edit Dockerfile=
 build docker di terminal
   docker build -t agis3636/command command
 
-  docker image inspect agis3636/command
+  docker image inspect agis3636/command (ada informasi expose)
+  docker container create --name command -p 8080:8080 agis3636/command
+  docker container start command
+  docker container ls
+buka browser (ipaddress:8080) | atau bisa juga menggunakan perintah curl
+  curl localhost:8080
+  docker container stop command
+  curl localhost:8080 (maka dia mati)
+  docker container ls (ga ada container / mati)
+
+----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+
+  # ENVIRONMENT VARIABLE INSTRUCTION
+buat directory env | didalamnya ada file coding golang bernama main.go | sejajar dengan .Dockerfile
+  ---------------
+edit Dockerfile=
+  FROM golang:1.18-alpine
+  
+  ENV APP_PORT=8080
+
+  RUN mkdir app
+  COPY main.go app
+
+  EXPOSE ${APP_PORT}
+
+  CMD go run app/main.go
+  ---------------
+build docker di terminal
+  docker build -t agis3636/command command
+
+  docker image inspect agis3636/command (ada informasi env)
   docker container create --name command -p 8080:8080 agis3636/command
   docker container start command
   docker container ls
