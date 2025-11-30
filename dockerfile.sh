@@ -141,10 +141,12 @@ lalu didalam text ada app.log, sample.log, world.txt, directory temp
 di dalam temp ada sample.txt
 
 edit .dockerignore=
+  ---------------
   text/*.log
   text/temp
-  ---------------
+  
 edit Dockerfile=
+  ---------------
   FROM alpine:3
 
   RUN mkdir hello
@@ -164,8 +166,9 @@ build docker di terminal
 
   # EXPOSE INSTRUCTION
 buat directory expose | didalamnya ada file coding golang bernama main.go | sejajar dengan .Dockerfile
-  ---------------
+  
 edit Dockerfile=
+  ---------------
   FROM golang:1.18-alpine
 
   RUN mkdir app
@@ -193,8 +196,9 @@ buka browser (ipaddress:8080) | atau bisa juga menggunakan perintah curl
 
   # ENVIRONMENT VARIABLE INSTRUCTION
 buat directory env | didalamnya ada file coding golang bernama main.go | sejajar dengan .Dockerfile
-  ---------------
+  
 edit Dockerfile=
+  ---------------
   FROM golang:1.18-alpine
   
   ENV APP_PORT=8080
@@ -212,12 +216,15 @@ build docker di terminal
   docker image inspect agis3636/command (ada informasi env)
   docker container create --name command --env APP_PORT=9090 -p 9090:9090 agis3636/command
   docker container start command
+
+  docker container ls
   docker container logs command
   
-  docker container ls
-buka browser (ipaddress:8080) | atau bisa juga menggunakan perintah curl
-  curl localhost:8080
+buka browser (ipaddress:9090) | atau bisa juga menggunakan perintah curl
+  curl localhost:8080 (coba pakai port 8080 dulu, pasti dia ga akan jalan)
+  curl localhost:9090 (dia jalan)
+  
   docker container stop command
-  curl localhost:8080 (maka dia mati)
+  curl localhost:9090 (maka dia mati)
   docker container ls (ga ada container / mati)
 
