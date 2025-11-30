@@ -228,3 +228,42 @@ buka browser (ipaddress:9090) | atau bisa juga menggunakan perintah curl
   curl localhost:9090 (maka dia mati)
   docker container ls (ga ada container / mati)
 
+----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+
+  # VOLUME INSTRUCTION
+buat directory volume | didalamnya ada file coding golang bernama main.go | sejajar dengan .Dockerfile
+  
+edit Dockerfile=
+  ---------------
+  FROM golang:1.18-alpine
+  
+  ENV APP_PORT=8080
+  ENV APP_DATA=/logs
+
+  RUN mkdir ${APP_DATA}
+  RUN mkdir app
+  COPY main.go app
+
+  EXPOSE ${APP_PORT}
+  VOLUME ${APP_DATA}
+
+  CMD go run app/main.go
+  ---------------
+build docker di terminal
+  docker build -t agis3636/command command
+
+  docker image inspect agis3636/command (ada informasi env)
+  docker container create --name command --env APP_PORT=9090 -p 9090:9090 agis3636/command
+  docker container start command
+
+  docker container ls
+  docker container logs command
+  
+buka browser (ipaddress:9090) | atau bisa juga menggunakan perintah curl
+  curl localhost:8080 (coba pakai port 8080 dulu, pasti dia ga akan jalan)
+  curl localhost:9090 (dia jalan)
+  
+  docker container stop command
+  curl localhost:9090 (maka dia mati)
+  docker container ls (ga ada container / mati)
