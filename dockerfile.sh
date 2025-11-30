@@ -210,12 +210,14 @@ build docker di terminal
   docker build -t agis3636/command command
 
   docker image inspect agis3636/command (ada informasi env)
-  docker container create --name command -p 8080:8080 agis3636/command
+  docker container create --name command --env APP_PORT=9090 -p 9090:9090 agis3636/command
   docker container start command
+  docker container logs command
+  
   docker container ls
 buka browser (ipaddress:8080) | atau bisa juga menggunakan perintah curl
   curl localhost:8080
   docker container stop command
   curl localhost:8080 (maka dia mati)
   docker container ls (ga ada container / mati)
-  docker container logs command
+
