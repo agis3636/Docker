@@ -151,7 +151,7 @@ edit .Dockerfile=
   COPY text/* hello
 
   CMD ls -l hello
-    ---------------
+  ---------------
 build docker di terminal
   docker build -t agis3636/command command
 
@@ -163,8 +163,8 @@ build docker di terminal
 ----------------------------------------------------------------------------------
 
   # EXPOSE INSTRUCTION
-buat directory expose, didalamnya ada file coding golang bernama main.go
-
+buat directory expose | didalamnya ada file coding golang bernama main.go | sejajar dengan .Dockerfile
+  ---------------
 edit .Dockerfile=
   FROM golang:1.18-alpine
 
@@ -174,3 +174,17 @@ edit .Dockerfile=
   EXPOSE 8080
 
   CMD go run app/main.go
+  ---------------
+build docker di terminal
+  docker build -t agis3636/command command
+
+  docker image inspect agis3636/command
+  docker container create --name command -p 8080:8080 agis3636/command
+  docker container start command
+  docker container ls
+buka browser (ipaddress:8080) | atau bisa juga menggunakan perintah curl
+  curl localhost:8080
+  docker container stop command
+  curl localhost:8080 (maka dia mati)
+  docker container ls (ga ada container / mati)
+  docker container logs command
