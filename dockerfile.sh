@@ -253,17 +253,19 @@ edit Dockerfile=
 build docker di terminal
   docker build -t agis3636/command command
 
-  docker image inspect agis3636/command (ada informasi env)
-  docker container create --name command --env APP_PORT=9090 -p 9090:9090 agis3636/command
+  docker image inspect agis3636/command (ada informasi volume)
+  docker container create --name command -p 9090:9090 agis3636/command
   docker container start command
 
-  docker container ls
-  docker container logs command
-  
-buka browser (ipaddress:9090) | atau bisa juga menggunakan perintah curl
-  curl localhost:8080 (coba pakai port 8080 dulu, pasti dia ga akan jalan)
-  curl localhost:9090 (dia jalan)
-  
-  docker container stop command
-  curl localhost:9090 (maka dia mati)
-  docker container ls (ga ada container / mati)
+  docker container logs command (cuma nampilin logs run di por 8080 aja)
+buka http://localhost:9090/budi
+buka http://localhost:9090/enda
+buka http://localhost:9090/suli
+nanti dia akan otomatis buat file di logs
+  docker container logs command (semua nya di tampilin)
+
+  docker container inspect command (cari nama volume di mounts)
+96ca3f052e608b4c3d479cd30d71047d9f33d1e4cac661bedde500c6fe8c34d2
+
+  docker volume ls
+pastikan nama volume yang dicek pada saat inspect ada
