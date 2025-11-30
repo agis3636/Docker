@@ -223,7 +223,7 @@ Super cepat, tapi **tidak ada jaminan** brosur terbaca atau sampai ke orang yang
 
 ---
 
-Berikut **daftar lengkap dan rapi** berisi:
+# Berikut **daftar lengkap dan rapi** berisi:
 
 1. **Protokol-protokol yang berjalan di atas TCP**
 2. **Protokol-protokol yang berjalan di atas UDP**
@@ -301,8 +301,6 @@ Beberapa protokol fleksibel memakai dua-duanya tergantung fungsi.
 | **IKEv2**         | 500, 4500 | Berbasis UDP tapi dapat encapsulated |
 
 # 🟡 4. Kategori Port menurut IANA
-
-Untuk jelasin ke mahasiswa:
 
 | Range           | Nama                  | Deskripsi                                            |
 | --------------- | --------------------- | ---------------------------------------------------- |
