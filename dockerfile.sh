@@ -144,7 +144,7 @@ edit .dockerignore=
   text/*.log
   text/temp
   ---------------
-edit .Dockerfile=
+edit Dockerfile=
   FROM alpine:3
 
   RUN mkdir hello
@@ -165,7 +165,7 @@ build docker di terminal
   # EXPOSE INSTRUCTION
 buat directory expose | didalamnya ada file coding golang bernama main.go | sejajar dengan .Dockerfile
   ---------------
-edit .Dockerfile=
+edit Dockerfile=
   FROM golang:1.18-alpine
 
   RUN mkdir app
