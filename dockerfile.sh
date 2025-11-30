@@ -8,7 +8,8 @@ build docker di terminal
   docker image ls
   docker images
 
-------------------------------------------------------------
+----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
 
 # RUN INSTRUCTION
 edit file Dockerfile di dalam directory
@@ -28,7 +29,8 @@ build dengan progress dan no cache
   docker image ls
   docker image ls | grep agis3636
 
-------------------------------------------------------------------
+----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
 
   # CMD INSTRUCTION
 edit file Dockerfile di dalam directory
@@ -55,6 +57,7 @@ inspect
 coba start 3 x lalu liat logs nya psti di logs sesuai dengan apa yang di start
 
 ----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
 
   # LABEL INSTRUCTION
 edit file Dockerfile di dalam directory
@@ -75,6 +78,7 @@ inspect
   docker image inspect namaimage
   docker image inspect agis3636/command
 
+----------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------
 
   # ADD INSTRUCTION
@@ -106,7 +110,8 @@ build docker di terminal
   docker container start command
   docker container logs command
 
-  ----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
 
   # COPY INSTRUCTION
 buat directory add dan di dalam nya ada Dockerfile
@@ -127,7 +132,8 @@ build docker di terminal
   docker container start command
   docker container logs command
 
-  ----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
 
   # DOCKERIGNORE File
 buat directory ignore dan di dalam nya ada Dockerfile dan .dockerignore dan directory text
@@ -152,3 +158,19 @@ build docker di terminal
   docker container create --name command agis3636/command
   docker container start command
   docker container logs command
+
+----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+
+  # EXPOSE INSTRUCTION
+buat directory expose, didalamnya ada file coding golang bernama main.go
+
+edit .Dockerfile=
+  FROM golang:1.18-alpine
+
+  RUN mkdir app
+  COPY main.go app
+
+  EXPOSE 8080
+
+  CMD go run app/main.go
