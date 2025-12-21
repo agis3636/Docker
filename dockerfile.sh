@@ -166,6 +166,7 @@ build docker di terminal
 
   # EXPOSE INSTRUCTION
 buat directory expose | didalamnya ada file coding golang bernama main.go | sejajar dengan .Dockerfile
+file main.go ada di pertemuan 8 "main-go-expose"
   
 edit Dockerfile=
   ---------------
@@ -196,6 +197,7 @@ buka browser (ipaddress:8080) | atau bisa juga menggunakan perintah curl
 
   # ENVIRONMENT VARIABLE INSTRUCTION
 buat directory env | didalamnya ada file coding golang bernama main.go | sejajar dengan .Dockerfile
+file main.go ada di pertemuan 8 "main-go-env"
   
 edit Dockerfile=
   ---------------
@@ -233,6 +235,7 @@ buka browser (ipaddress:9090) | atau bisa juga menggunakan perintah curl
 
   # VOLUME INSTRUCTION
 buat directory volume | didalamnya ada file coding golang bernama main.go | sejajar dengan .Dockerfile
+file main.go ada di pertemuan 8 "main-go-volume"
   
 edit Dockerfile=
   ---------------
@@ -254,7 +257,7 @@ build docker di terminal
   docker build -t agis3636/command command
 
   docker image inspect agis3636/command (ada informasi volume)
-  docker container create --name command -p 9090:9090 agis3636/command
+  docker container create --name command -p 8080:8080 agis3636/command
   docker container start command
 
   docker container logs command (cuma nampilin logs run di por 8080 aja)
@@ -269,3 +272,31 @@ nanti dia akan otomatis buat file di logs
 
   docker volume ls
 pastikan nama volume yang dicek pada saat inspect ada
+
+matikan
+  docker container stop command
+
+----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+
+  # WORKDIR INSTRUCTION
+buat directory workdir | didalamnya ada file coding golang bernama main.go | sejajar dengan .Dockerfile
+file main.go ada di pertemuan 8 "main-go-expose"
+  
+edit Dockerfile=
+  ---------------
+  FROM golang:1.18-alpine
+
+  WORKDIR /app
+  COPY main.go /app
+  
+  EXPOSE 8080
+
+  CMD go run main.go
+  ---------------
+build docker di terminal
+  docker build -t agis3636/command command
+  docker container create --name command -p 8080:8080 agis3636/command
+  docker container start command
+
+  docker container exec -i -t command /bin/sh
