@@ -301,3 +301,41 @@ build docker di terminal
 
   docker container exec -i -t command /bin/sh
   docker container exec -i -t command /bin/bash
+
+jalankan perintah pwd | lihat hasilnya
+
+----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+
+  # USER INSTRUCTION
+buat directory user | didalamnya ada file coding golang bernama main.go | sejajar dengan .Dockerfile
+file main.go ada di pertemuan 8 "main-go-expose"
+  
+edit Dockerfile=
+  ---------------
+  FROM golang:1.18-alpine
+  
+  RUN mkdir /app
+
+  RUN addgroup -S aretagroup
+  RUN adduser -S -D -h /app agisuser aretagroup
+  RUN chown -R agisuser:aretagroup /app
+
+  USER agisuser
+
+  COPY main.go /app
+  
+  EXPOSE 8080
+
+  CMD go run /app/main.go
+  ---------------
+build docker di terminal
+  docker build -t agis3636/command command
+  docker container create --name command -p 8080:8080 agis3636/command
+  docker container start command
+
+  docker container exec -i -t command /bin/sh
+  docker container exec -i -t command /bin/bash
+
+jalankan perintah whoami | lihat hasilnya
+lihat juga kepemilikan direktory /app | pasti berubah
