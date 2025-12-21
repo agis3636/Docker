@@ -39,7 +39,7 @@ Ini buat **masuk ke container yang lagi jalan** pakai shell `sh`.
 
 ---
 
-## 1️⃣ `-i` → **interactive (STDIN tetap terbuka)**
+## A `-i` → **interactive (STDIN tetap terbuka)**
 
 ### Apa artinya?
 
@@ -75,7 +75,7 @@ docker exec -i name cat
 
 ---
 
-## 2️⃣ `-t` → **TTY (Terminal palsu / pseudo-terminal)**
+## B `-t` → **TTY (Terminal palsu / pseudo-terminal)**
 
 ### Apa itu TTY?
 
