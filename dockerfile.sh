@@ -300,3 +300,4 @@ build docker di terminal
   docker container start command
 
   docker container exec -i -t command /bin/sh
+  docker container exec -i -t command /bin/bash
