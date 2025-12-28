@@ -1,9 +1,11 @@
 DOCKER HUB REGISTRY
 ------------------------------------------------------------------------------------------
   Token Belajar:
+  
     dckr_pat_uaATiKsxAe64dCaFqrYl6TN4j3U
 ------------------------------------------------------------------------------------------
   Docker Login:
+  
     docker login -u agis3636
     
     i Info → A Personal Access Token (PAT) can be used instead.
@@ -18,13 +20,16 @@ DOCKER HUB REGISTRY
     Login Succeeded
 ------------------------------------------------------------------------------------------
   Docker Push:
+  
     docker push agis3636/image:v1.0
 ------------------------------------------------------------------------------------------
   kalau tidak pakai username gak akan bisa, akan muncul output seperti ini:
+  
     denied: requested access to the resource is denied
 
 
 =========================================================================================
+
 =========================================================================================
 
 
