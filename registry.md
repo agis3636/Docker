@@ -41,4 +41,7 @@ https://www/digitalocean.com/products/container-registry
 
   <img width="1352" height="627" alt="Image" src="https://github.com/user-attachments/assets/b96341f0-66f3-4c1d-97ba-45e90097d42c" />
 
-  
+  <img width="1353" height="644" alt="Image" src="https://github.com/user-attachments/assets/6ba0b84b-fa95-4d17-a6e9-a90188115ab2" />
+
+  docker tag agis3636/image registry.digitalocean.com/agis
+  docker--config /user/namapc-atau-user/.docker-digital-ocean/ push agis3636/image
