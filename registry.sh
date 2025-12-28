@@ -20,6 +20,5 @@ DOCKER HUB REGISTRY
   Docker Push:
     docker push agis3636/image:v1.0
 ------------------------------------------------------------------------------------------
-  kalo ga pakai username gabisa muncl kaya ini:
-    ```
+  kalau tidak pakai username gak akan bisa, akan muncul output seperti ini:
     denied: requested access to the resource is denied
