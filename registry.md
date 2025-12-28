@@ -31,6 +31,7 @@ DOCKER HUB REGISTRY
 DIGITAL OCEAN CONTAINER REGISTRY
 ------------------------------------------------------------------------------------------
 https://cloud.digitalocean.com/registry?i=9e9c9b
+
 https://www/digitalocean.com/products/container-registry
 
   <img width="1352" height="627" alt="Image" src="https://github.com/user-attachments/assets/b96341f0-66f3-4c1d-97ba-45e90097d42c" />
