@@ -282,6 +282,10 @@ matikan
   # WORKDIR INSTRUCTION
 buat directory workdir | didalamnya ada file coding golang bernama main.go | sejajar dengan .Dockerfile
 file main.go ada di pertemuan 8 "main-go-expose"
+
+absolute path adalah path paling awal
+relative path adalah dia ngikutin dari working direktory sebelumnya
+
   
 edit Dockerfile=
   ---------------
