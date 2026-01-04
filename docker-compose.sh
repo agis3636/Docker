@@ -178,3 +178,36 @@ cek ip
 
     docker compose down
 
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+             
+                ENVIRONMENT
+
+buat file dengan nama "docker-compose.yaml"
+
+    services:
+     
+      mongodb-example:
+        image: mongo:latest
+        container_name: mongodb-example  
+        ports:
+          - "27017:27017"
+        environment:
+          MONGO_INITDB_ROOT_USERNAME: agis
+          MONGO_INITDB_ROOT_PASSWORD: rahasia
+          MONGO_INITDB_DATABASE: admin
+        
+---
+
+jalankan compose
+
+masuk dulu ke direktory tujuan
+
+    docker compose create
+    docker compose start
+    docker compose ps
+
+cek ip
+    curl 192.168.80.175:8081
+    curl 192.168.80.175:8081
+
+    docker compose down
