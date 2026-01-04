@@ -1,15 +1,15 @@
 YAML (YAML Ain't Markup Language) adalah format serialisasi data yang mudah dibaca manusia, sering digunakan untuk file konfigurasi di banyak alat DevOps seperti Kubernetes, Ansible, dan Terraform, karena strukturnya sederhana berbasis indentasi yang mirip Python, memfasilitasi pertukaran data antar sistem, dan kompatibel dengan semua bahasa pemrograman modern. 
 
-** Poin-Poin Penting YAML: **
+**Poin-Poin Penting YAML:**
 
 - **Format Serialisasi Data:** Mengubah struktur data menjadi teks untuk disimpan atau ditransmisikan.
-- *Mudah Dibaca Manusia:** Sintaksisnya bersih dan minimalis, fokus pada indentasi, bukan tanda kurung atau tag yang rumit.
-- *Untuk File Konfigurasi:* Sangat populer untuk mendefinisikan konfigurasi aplikasi, layanan, dan infrastruktur (Infrastructure as Code).
-- *Struktur Data:* Mendukung tipe data seperti string, angka, daftar (list), dan peta (map/dictionary).
-- *Superset JSON:* Setiap file *JSON* yang valid juga merupakan file YAML yang valid.
-- *Digunakan di:* *AWS, Kubernetes, Ansible, Terraform,* dan banyak alat *DevOps* lainnya. 
+- **Mudah Dibaca Manusia:** Sintaksisnya bersih dan minimalis, fokus pada indentasi, bukan tanda kurung atau tag yang rumit.
+- **Untuk File Konfigurasi:** Sangat populer untuk mendefinisikan konfigurasi aplikasi, layanan, dan infrastruktur (Infrastructure as Code).
+- **Struktur Data:** Mendukung tipe data seperti *string, angka, daftar (list), dan peta (map/dictionary).*
+- **Superset JSON:** Setiap file *JSON* yang valid juga merupakan file *YAML* yang valid
+- **Digunakan di:** *AWS, Kubernetes, Ansible, Terraform,* dan banyak alat *DevOps* lainnya. 
 
-*Contoh Sederhana:*
+**Contoh Sederhana:**
 
 ```yaml
 nama: "Budi"
