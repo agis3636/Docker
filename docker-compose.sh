@@ -67,3 +67,8 @@ ini hanya menghentikan container yang di setting dari compose saja, yang bukan d
 
                 MENGHAPUS CONTAINER
 
+coba di start dulu composenya. karna bedanya kalo kita pakai docker compose, ketika di hapus composenya dia bisa langsung terhapus tanpa harus di matikan dulu compose nya
+
+  docker compose start
+  docker compose down
+  docker compose ps -a
