@@ -53,7 +53,7 @@ untuk membuat Container, harus masuk ke dalam directory yang menyimpan file "doc
 jalankan dulu container yang dibuat selain menggunakan compose
 
     docker compose ps
-    docker compose ls
+
 
 ---
 
@@ -73,3 +73,17 @@ coba di start dulu composenya. karna bedanya kalo kita pakai docker compose, ket
     docker compose down
     docker compose ps -a
     docker container ls -a
+
+---
+
+                PROJECT NAME
+
+      docker compose ls
+    docker compose create
+    docker compose start
+      docker compose ls
+    docker compose down
+
+---
+
+                KOMENTAR
