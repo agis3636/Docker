@@ -112,3 +112,28 @@ masuk dulu ke direktory tujuan
 --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
              
                 KOMENTAR
+
+buat file dengan nama "docker-compose.yaml"
+
+    services:
+    
+      # this is example nginx
+      nginx-example:
+        image: nginx:latest
+        container_name: nginx-example
+        
+      # this is example mongo
+      mongodb-example:
+        image: mongo:latest
+        container_name: mongodb-example
+        
+---
+
+jalankan compose
+
+masuk dulu ke direktory tujuan
+
+    docker compose create
+    docker compose start
+
+    docker compose down
