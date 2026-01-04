@@ -137,3 +137,39 @@ masuk dulu ke direktory tujuan
     docker compose start
 
     docker compose down
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+             
+                PORT
+
+buat file dengan nama "docker-compose.yaml"
+
+    services:
+    
+      # ini yang long port   
+      nginx-port1:
+        image: nginx:latest
+        container_name: nginx-port1  
+        ports:
+          - protocol: tcp
+            published: 8080
+            target: 80
+    
+      # ini yang short port  
+      nginx-port2:
+        image: nginx:latest
+        container_name: nginx-port2
+        ports:
+          - "8081:80"
+        
+---
+
+jalankan compose
+
+masuk dulu ke direktory tujuan
+
+    docker compose create
+    docker compose start
+
+    docker compose down
+
