@@ -2,6 +2,8 @@
 
 ---
 
+                BUAT FILE DOCKER COMPOSE
+
 buat file dengan nama "docker-compose.yaml"
 
     services:
@@ -11,6 +13,8 @@ buat file dengan nama "docker-compose.yaml"
 
 ---
 
+                MEMBUAT CONTAINER
+                
 untuk membuat Container, harus masuk ke dalam directory yang menyimpan file "docker-compose.yaml"
 
     docker compose create
@@ -37,7 +41,29 @@ untuk membuat Container, harus masuk ke dalam directory yang menyimpan file "doc
 
 ---
 
-jalankan container
+                JALANKAN CONTAINER
 
     docker compose start
     docker container ls
+
+---
+
+                MELIHAT CONTAINER
+
+jalankan dulu container yang dibuat selain menggunakan compose
+
+    docker compose ps
+    docker compose ls
+
+---
+
+                MENGHENTIKAN CONTAINER
+
+    docker compose stop
+
+ini hanya menghentikan container yang di setting dari compose saja, yang bukan dari compose ga mati
+
+---
+
+                MENGHAPUS CONTAINER
+
