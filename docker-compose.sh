@@ -204,10 +204,5 @@ masuk dulu ke direktory tujuan
 
     docker compose create
     docker compose start
-    docker compose ps
-
-cek ip
-    curl 192.168.80.175:8081
-    curl 192.168.80.175:8081
 
     docker compose down
