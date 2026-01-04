@@ -86,4 +86,18 @@ coba di start dulu composenya. karna bedanya kalo kita pakai docker compose, ket
 
 ---
 
+                SERVICES
+
+buat file dengan nama "docker-compose.yaml"
+
+    services:
+      nginx-example:
+        image: nginx:latest
+        container_name: nginx-example
+      mongodb-example:
+        image: mongo:latest
+        container_name: mongodb-example
+        
+
+---
                 KOMENTAR
