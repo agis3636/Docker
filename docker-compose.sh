@@ -1,6 +1,6 @@
 # Docker Compose
 
----
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
                 BUAT FILE DOCKER COMPOSE
 
@@ -39,14 +39,14 @@ untuk membuat Container, harus masuk ke dalam directory yang menyimpan file "doc
     docker compose create
     docker container ls -a
 
----
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
                 JALANKAN CONTAINER
 
     docker compose start
     docker container ls
 
----
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
                 MELIHAT CONTAINER
 
@@ -55,7 +55,7 @@ jalankan dulu container yang dibuat selain menggunakan compose
     docker compose ps
 
 
----
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
                 MENGHENTIKAN CONTAINER
 
@@ -63,7 +63,7 @@ jalankan dulu container yang dibuat selain menggunakan compose
 
 ini hanya menghentikan container yang di setting dari compose saja, yang bukan dari compose ga mati
 
----
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
                 MENGHAPUS CONTAINER
 
@@ -74,7 +74,7 @@ coba di start dulu composenya. karna bedanya kalo kita pakai docker compose, ket
     docker compose ps -a
     docker container ls -a
 
----
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
                 PROJECT NAME
 
@@ -84,7 +84,7 @@ coba di start dulu composenya. karna bedanya kalo kita pakai docker compose, ket
       docker compose ls
     docker compose down
 
----
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
                 SERVICES
 
@@ -98,6 +98,17 @@ buat file dengan nama "docker-compose.yaml"
         image: mongo:latest
         container_name: mongodb-example
         
-
 ---
+
+jalankan compose
+
+masuk dulu ke direktory tujuan
+
+    docker compose create
+    docker compose start
+
+    docker compose down
+    
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+             
                 KOMENTAR
