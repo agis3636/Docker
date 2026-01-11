@@ -231,6 +231,8 @@ buat file dengan nama "docker-compose.yaml" dan buat 2 directory mongobind1 dan 
         volumes:
           - "./mongobind1:/data/db"
 
+---
+
 jalankan compose
 
     docker compose create
@@ -258,6 +260,8 @@ lalu cek directory pasti sudah terisi data db nya
             source: "./mongobind2"
             target: "/data/db"
             read_only: false
+
+---
 
 jalankan compose
 
@@ -308,7 +312,9 @@ buat file dengan nama "docker-compose.yaml" dan buat 2 directory mongovolume1 da
         name: mongovolume1
       mongovolume2:
         name: mongovolume2
-    
+
+---
+
 jalankan compose
 
     docker compose create
@@ -328,6 +334,35 @@ mau hapus volume ga bisa dari compose harus manual
 
 test dengan menggunakan nginxexample yang kemarin di buat
 lalu cek ke bagian networknya
+    docker compose create
+    docker compose start
+    docker container inspect namacontainer
+
+---
+
+    services:
+     
+      mongodb-example:
+        image: mongo:latest
+        container_name: mongodb-example  
+        ports:
+          - "27017:27017"
+        environment:
+          MONGO_INITDB_ROOT_USERNAME: agis
+          MONGO_INITDB_ROOT_PASSWORD: rahasia
+          MONGO_INITDB_DATABASE: admin
+        networks:
+          - dockernetwork
+          
+    networks:
+      dockernetwork:
+        name: dockernetwork
+        driver: bridge
+        
+---
+
+jalankan compose
+
     docker compose create
     docker compose start
     docker container inspect namacontainer
