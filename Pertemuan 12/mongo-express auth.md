@@ -97,4 +97,4 @@ Lu **belum set** di mongo-express UI
 
 ---
 
-## 🧠 > **mongo-express punya login sendiri, beda sama login MongoDB.**
+> **mongo-express punya login sendiri, beda sama login MongoDB.**
