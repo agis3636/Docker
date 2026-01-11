@@ -365,3 +365,45 @@ jalankan compose
     docker compose create
     docker compose start
     docker container inspect namacontainer
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+             
+                DEPENDS ON
+
+services:
+  mongodb-example:
+    image: mongo:latest
+    container_name: mongodb-example
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: agis
+      MONGO_INITDB_ROOT_PASSWORD: rahasia
+      MONGO_INITDB_DATABASE: admin
+    networks:
+      - dockernetwork
+
+  mongodb-example:
+    image: mongo:latest
+    container_name: mongodb-example
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: agis
+      MONGO_INITDB_ROOT_PASSWORD: rahasia
+      MONGO_INITDB_DATABASE: admin
+    networks:
+      - dockernetwork
+
+networks:
+  dockernetwork:
+    name dockernetwork
+    driver: bridge
+        
+---
+
+jalankan compose
+
+    docker compose create
+    docker compose start
+    docker container inspect namacontainer
