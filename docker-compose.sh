@@ -217,9 +217,8 @@ buat file dengan nama "docker-compose.yaml" dan buat 2 directory mongobind1 dan 
 
             Short Syntax
                 
-    services:
-     
-      mongodb1:
+services:
+  mongodb1:
         image: mongo:latest
         container_name: mongodb1
         ports:
@@ -355,7 +354,7 @@ services:
 
 networks:
   dockernetwork:
-    name dockernetwork
+    name: dockernetwork
     driver: bridge
         
 ---
