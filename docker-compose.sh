@@ -324,7 +324,7 @@ cek volume
     docker volume ls
 
 mau hapus volume ga bisa dari compose harus manual
-    docker compose down (pasti volume masih ada)
+    docker compose down (pasti volume masih ada) docker volume ls
     docker volume rm namavolume
     docker volume prune (hapus semua volume)
 
@@ -419,3 +419,17 @@ buar directory "build"
 di dalamnya ada file "docker-compose.yaml" dan directory "app"
 di dalam "app" ada file "main.go" dan "Dockerfile"
 
+jalankan compose
+
+    docker compose build
+    docker image ls
+    docker compose create
+    docker compose start
+    docker compose ps
+    
+mau hapus image ga bisa dari compose harus manual
+    docker compose down (pasti image masih ada) docker image ls
+    docker image rm namaimage:tag
+
+terus kalo mau build ulang, misalnya kodenya di ubah
+si compose harus down dulu artinya di hapus dulu baru create lagi
