@@ -340,24 +340,23 @@ lalu cek ke bagian networknya
 
 ---
 
-    services:
-     
-      mongodb-example:
-        image: mongo:latest
-        container_name: mongodb-example  
-        ports:
-          - "27017:27017"
-        environment:
-          MONGO_INITDB_ROOT_USERNAME: agis
-          MONGO_INITDB_ROOT_PASSWORD: rahasia
-          MONGO_INITDB_DATABASE: admin
-        networks:
-          - dockernetwork
-          
+services:
+  mongodb-example:
+    image: mongo:latest
+    container_name: mongodb-example
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: agis
+      MONGO_INITDB_ROOT_PASSWORD: rahasia
+      MONGO_INITDB_DATABASE: admin
     networks:
-      dockernetwork:
-        name: dockernetwork
-        driver: bridge
+      - dockernetwork
+
+networks:
+  dockernetwork:
+    name dockernetwork
+    driver: bridge
         
 ---
 
