@@ -321,3 +321,13 @@ mau hapus volume ga bisa dari compose harus manual
     docker compose down (pasti volume masih ada)
     docker volume rm namavolume
     docker volume prune (hapus semua volume)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+             
+                NETWORK
+
+test dengan menggunakan nginxexample yang kemarin di buat
+lalu cek ke bagian networknya
+    docker compose create
+    docker compose start
+    docker container inspect namacontainer
