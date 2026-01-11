@@ -244,9 +244,9 @@ lalu cek directory pasti sudah terisi data db nya
                 
     services:
      
-      mongodb1:
+      mongodb2:
         image: mongo:latest
-        container_name: mongodb1
+        container_name: mongodb2
         ports:
           - "27018:27017"
         environment:
@@ -254,7 +254,10 @@ lalu cek directory pasti sudah terisi data db nya
           MONGO_INITDB_ROOT_PASSWORD: rahasia
           MONGO_INITDB_DATABASE: admin
         volumes:
-          - "./data1:/data/db"
+          - type: bind
+            source: "./data2"
+            target: "/data/db"
+            read_only: false
 
 jalankan compose
 
