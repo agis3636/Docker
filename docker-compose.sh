@@ -211,7 +211,7 @@ masuk dulu ke direktory tujuan
              
                 BIND MONTS
 
-buat file dengan nama "docker-compose.yaml" dan buat 2 directory data1 dan data2
+buat file dengan nama "docker-compose.yaml" dan buat 2 directory mongobind1 dan mongobind2
 
 ---
 
@@ -229,7 +229,7 @@ buat file dengan nama "docker-compose.yaml" dan buat 2 directory data1 dan data2
           MONGO_INITDB_ROOT_PASSWORD: rahasia
           MONGO_INITDB_DATABASE: admin
         volumes:
-          - "./data1:/data/db"
+          - "./mongobind1:/data/db"
 
 jalankan compose
 
@@ -255,7 +255,7 @@ lalu cek directory pasti sudah terisi data db nya
           MONGO_INITDB_DATABASE: admin
         volumes:
           - type: bind
-            source: "./data2"
+            source: "./mongobind2"
             target: "/data/db"
             read_only: false
 
@@ -265,3 +265,59 @@ jalankan compose
     docker compose start
     
 lalu cek directory pasti sudah terisi data db nya
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+             
+                VOLUMES
+
+buat file dengan nama "docker-compose.yaml" dan buat 2 directory mongovolume1 dan mongovolume2
+
+---
+    
+    services:
+     
+      mongodb1:
+        image: mongo:latest
+        container_name: mongodb1
+        ports:
+          - "27017:27017"
+        environment:
+          MONGO_INITDB_ROOT_USERNAME: agis
+          MONGO_INITDB_ROOT_PASSWORD: rahasia
+          MONGO_INITDB_DATABASE: admin
+        volumes:
+          - "mongovolume1:/data/db"
+     
+      mongodb2:
+        image: mongo:latest
+        container_name: mongodb2
+        ports:
+          - "27018:27017"
+        environment:
+          MONGO_INITDB_ROOT_USERNAME: agis
+          MONGO_INITDB_ROOT_PASSWORD: rahasia
+          MONGO_INITDB_DATABASE: admin
+        volumes:
+          - type: volume
+            source: mongovolume2
+            target: "/data/db"
+            read_only: false
+
+    volumes:
+      mongovolume1:
+        name: mongovolume1
+      mongovolume2:
+        name: mongovolume2
+    
+jalankan compose
+
+    docker compose create
+    docker compose start
+    
+cek volume
+    docker volume ls
+
+mau hapus volume ga bisa dari compose harus manual
+    docker compose down (pasti volume masih ada)
+    docker volume rm namavolume
+    docker volume prune (hapus semua volume)
