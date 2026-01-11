@@ -410,4 +410,12 @@ jalankan compose
     docker compose create
     docker compose start
     docker compose ps
-    
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+             
+                BUILDS DOCKERFILE
+
+buar directory "build"
+di dalamnya ada file "docker-compose.yaml" dan directory "app"
+di dalam "app" ada file "main.go" dan "Dockerfile"
+
