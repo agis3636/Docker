@@ -206,3 +206,59 @@ masuk dulu ke direktory tujuan
     docker compose start
 
     docker compose down
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+             
+                BIND MONTS
+
+buat file dengan nama "docker-compose.yaml" dan buat 2 directory data1 dan data2
+
+---
+
+            Short Syntax
+                
+    services:
+     
+      mongodb1:
+        image: mongo:latest
+        container_name: mongodb1
+        ports:
+          - "27017:27017"
+        environment:
+          MONGO_INITDB_ROOT_USERNAME: agis
+          MONGO_INITDB_ROOT_PASSWORD: rahasia
+          MONGO_INITDB_DATABASE: admin
+        volumes:
+          - "./data1:/data/db"
+
+jalankan compose
+
+    docker compose create
+    docker compose start
+    
+lalu cek directory pasti sudah terisi data db nya
+
+---
+
+            Long Syntax
+                
+    services:
+     
+      mongodb1:
+        image: mongo:latest
+        container_name: mongodb1
+        ports:
+          - "27018:27017"
+        environment:
+          MONGO_INITDB_ROOT_USERNAME: agis
+          MONGO_INITDB_ROOT_PASSWORD: rahasia
+          MONGO_INITDB_DATABASE: admin
+        volumes:
+          - "./data1:/data/db"
+
+jalankan compose
+
+    docker compose create
+    docker compose start
+    
+lalu cek directory pasti sudah terisi data db nya
