@@ -1,3 +1,5 @@
+<img width="1247" height="410" alt="Image" src="https://github.com/user-attachments/assets/6b22c847-c0bf-4abc-8c00-ab1ff837c17e" />
+
 Yang muncul di browser itu **BUKAN login MongoDB**, tapi **Basic Auth mongo-express**.
 
 `mongo-express` **SECARA DEFAULT** pakai **Basic Authentication** sendiri.
