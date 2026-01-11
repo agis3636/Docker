@@ -368,20 +368,9 @@ jalankan compose
 
 --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
              
-                DEPENDS ON
-
+                DEPENDS_ON
+                     
 services:
-  mongodb-example:
-    image: mongo:latest
-    container_name: mongodb-example
-    ports:
-      - "27017:27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: agis
-      MONGO_INITDB_ROOT_PASSWORD: rahasia
-      MONGO_INITDB_DATABASE: admin
-    networks:
-      - dockernetwork
 
   mongodb-example:
     image: mongo:latest
@@ -394,16 +383,31 @@ services:
       MONGO_INITDB_DATABASE: admin
     networks:
       - dockernetwork
+
+  mongodb-express-example:
+    image: mongo-express:latest
+    container_name: mongodb-express-example
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: agis
+      ME_CONFIG_MONGODB_ADMINPASSWORD: rahasia
+      ME_CONFIG_MONGODB_SERVER: mongodb-example
+    networks:
+      - dockernetwork
+    depends_on:
+      - mongodb-example
 
 networks:
   dockernetwork:
-    name dockernetwork
+    name: dockernetwork
     driver: bridge
-        
+      
 ---
 
 jalankan compose
 
     docker compose create
     docker compose start
-    docker container inspect namacontainer
+    docker compose ps
+    
