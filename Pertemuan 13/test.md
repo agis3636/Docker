@@ -142,7 +142,7 @@ services:
     # Karena di laptop ga ada node_modules, kita suruh container:
     # 1. "npm install" dulu (download library ke folder project)
     # 2. Baru setelah itu "npm start"
-    command: sh -c "npm install && npm start"
+    command: sh -c "npm install && npm start -- --host"
     
     # Biar terminal ga langsung close kalau ada error
     stdin_open: true
