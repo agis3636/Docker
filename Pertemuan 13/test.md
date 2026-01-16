@@ -195,3 +195,36 @@ docker compose logs -f
 
 ---
 
+### 2. Stirling-PDF (Pembunuh "iLovePDF") 📄
+
+**Masalah:**
+Sering perlu **Merge PDF, Split PDF, Convert PDF to Word, atau Tanda Tangan PDF**?
+Biasanya orang pakai website gratisan (seperti iLovePDF). Bahayanya, dokumen rahasia kamu diupload ke server orang lain.
+
+**Solusinya:**
+Stirling-PDF adalah aplikasi web yang fiturnya LENGKAP BANGET buat ngedit PDF, tapi jalan di server kamu sendiri. Dokumen aman, gak keluar kemana-mana.
+
+1. Folder: `mkdir pdf-tools` -> `cd pdf-tools`.
+2. File `docker-compose.yml`:
+```yaml
+version: '3.3'
+services:
+  stirling-pdf:
+    image: frooodle/s-pdf:latest
+    container_name: stirling_pdf
+    ports:
+      # HATI-HATI! Port internalnya 8080.
+      # Karena 8080 sudah dipake WordPress kamu, kita GANTI depannya jadi 8085
+      - '8085:8080'
+    volumes:
+      - ./trainingData:/usr/share/tessdata # Buat OCR (baca teks di gambar)
+      - ./extraConfigs:/configs
+    environment:
+      - DOCKER_ENABLE_SECURITY=false
+    restart: always
+
+```
+
+
+3. Jalankan: `docker compose up -d`.
+4. Buka: `http://localhost:8085`.
