@@ -180,3 +180,18 @@ docker compose logs -f
 
 ---
 
+```text
+📁 jellyfin/                <-- Folder Project Utama
+├── 📄 docker-compose.yml   <-- File Script tadi
+├── 📁 config/              <-- (Otomatis muncul pas dijalankan, isinya database)
+└── 📁 media/               <-- 📂 MASUKIN FILM KAMU DI SINI
+      ├── 📄 Spiderman.mp4
+      ├── 📄 Avengers.mkv
+      └── 📁 Drama Korea/
+             ├── 📄 Episode1.mp4
+             └── ...
+
+```
+
+---
+
