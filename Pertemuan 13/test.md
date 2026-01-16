@@ -94,6 +94,87 @@ Jika mau mematikan servernya, cukup ketik:
 docker compose down
 
 ```
+---
+
+---
+
+# REACT.JS
+
+tidak perlu mengotori laptop dengan install Node.js. Biarkan Docker yang menangani "jeroan" mesinnya, laptop cukup jadi tempat simpan file kodingannya saja.
+
+simpan file ini di dalam folder project hasil clone tadi.
+
+### File: `compose.yaml`
+
+```yaml
+version: '3.8'
+
+services:
+  app-react:
+    # Kita pinjam Image Node.js versi 18 (Alpine linux yang ringan)
+    image: node:18-alpine
+    
+    container_name: react-wsl-project
+    
+    # Set folder kerja di dalam container
+    working_dir: /app
+    
+    # VOLUME (Jembatan antara WSL Bapak & Container)
+    # Ini akan membuat codingan Bapak di WSL terbaca di dalam container.
+    # Karena Bapak belum npm install, nanti folder 'node_modules' 
+    # akan otomatis muncul di folder laptop Bapak setelah container jalan.
+    volumes:
+      - ./:/app
+      
+    # PORT
+    # Kiri (8000): Akses dari browser Windows Bapak
+    # Kanan (3000): Port default React (Cek note di bawah jika pakai Vite)
+    ports:
+      - "8000:3000"
+      
+    # ENVIRONMENT KHUSUS WSL
+    # Wajib ada supaya kalau Bapak edit file, browser otomatis refresh (Hot Reload)
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+      
+    # COMMAND (Otomatisasi)
+    # Karena di laptop ga ada node_modules, kita suruh container:
+    # 1. "npm install" dulu (download library ke folder project)
+    # 2. Baru setelah itu "npm start"
+    command: sh -c "npm install && npm start"
+    
+    # Biar terminal ga langsung close kalau ada error
+    stdin_open: true
+    tty: true
+
+```
+
+---
+
+1. **Jalankan Perintah:**
+Ketik:
+```bash
+docker compose up
+
+```
+
+
+2. **Tunggu Prosesnya (Penting!):**
+* Karena Bapak *fresh clone* dan belum pernah `npm install`, proses pertama kali akan **terasa lama** (bisa 5-10 menit tergantung internet).
+* Docker akan melakukan:
+- Download Image Node.js.
+- Menjalankan `npm install` (download ratusan MB library React).
+
+
+* **Tanda Berhasil:** Nanti di terminal akan berhenti bergerak dan muncul tulisan seperti `Compiled successfully!` atau `webpack compiled successfully`.
+
+
+3. **Buka Browser:**
+Akses: **`http://localhost:8000`**
+
+
+---
 
 ---
 
