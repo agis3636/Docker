@@ -111,29 +111,29 @@ version: '3.8'
 
 services:
   app-react:
-    # Kita pinjam Image Node.js versi 18 (Alpine linux yang ringan)
-    image: node:18-alpine
+    # Kita pinjam Image Node.js versi berapa aja (Alpine linux yang ringan)
+    image: node:22-alpine
     
     container_name: react-wsl-project
     
     # Set folder kerja di dalam container
     working_dir: /app
     
-    # VOLUME (Jembatan antara WSL Bapak & Container)
-    # Ini akan membuat codingan Bapak di WSL terbaca di dalam container.
-    # Karena Bapak belum npm install, nanti folder 'node_modules' 
-    # akan otomatis muncul di folder laptop Bapak setelah container jalan.
+    # VOLUME (Jembatan antara WSL/linux & Container)
+    # Ini akan membuat codingan di WSL/linux terbaca di dalam container.
+    # Karena belum npm install, nanti folder 'node_modules' 
+    # akan otomatis muncul di folder laptop setelah container jalan.
     volumes:
       - ./:/app
       
     # PORT
-    # Kiri (8000): Akses dari browser Windows Bapak
-    # Kanan (3000): Port default React (Cek note di bawah jika pakai Vite)
+    # Kiri (8000): Akses dari browser Windows
+    # Kanan (3000): Port default React (5173 jika pakai Vite)
     ports:
       - "8000:3000"
       
     # ENVIRONMENT KHUSUS WSL
-    # Wajib ada supaya kalau Bapak edit file, browser otomatis refresh (Hot Reload)
+    # Wajib ada supaya kalau edit file, browser otomatis refresh (Hot Reload)
     environment:
       - CHOKIDAR_USEPOLLING=true
       - WATCHPACK_POLLING=true
@@ -160,17 +160,8 @@ docker compose up
 ```
 
 
-2. **Tunggu Prosesnya (Penting!):**
-* Karena Bapak *fresh clone* dan belum pernah `npm install`, proses pertama kali akan **terasa lama** (bisa 5-10 menit tergantung internet).
-* Docker akan melakukan:
-- Download Image Node.js.
-- Menjalankan `npm install` (download ratusan MB library React).
 
-
-* **Tanda Berhasil:** Nanti di terminal akan berhenti bergerak dan muncul tulisan seperti `Compiled successfully!` atau `webpack compiled successfully`.
-
-
-3. **Buka Browser:**
+2. **Buka Browser:**
 Akses: **`http://localhost:8000`**
 
 
@@ -375,7 +366,7 @@ docker compose logs -f
 
 ---
 
-# Stirling-PDF (Pembunuh "iLovePDF") 📄
+# Stirling-PDF
 
 **Masalah:**
 Sering perlu **Merge PDF, Split PDF, Convert PDF to Word, atau Tanda Tangan PDF**?
