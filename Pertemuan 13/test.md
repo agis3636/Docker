@@ -1,3 +1,102 @@
+# WORDPRESS
+
+### File: `docker-compose.yml`
+
+Silakan *copy-paste* kode di bawah ini ke dalam file `docker-compose.yml` Anda:
+
+```yaml
+version: '3.8'  # Versi format docker-compose
+
+services:
+  # --- Service 1: Database (MySQL) ---
+  db:
+    image: mysql:5.7
+    container_name: wp_database_container  # Memberi nama wadah biar gampang dicari
+    restart: always  # Kalau container crash atau PC restart, dia otomatis nyala lagi
+    environment:
+      # Settingan username & password database (Wajib sama dengan yang di WordPress bawah)
+      MYSQL_ROOT_PASSWORD: passwordrahasia  # Password root database
+      MYSQL_DATABASE: wordpress_db          # Nama database yang akan dibuat
+      MYSQL_USER: user_wp                   # User khusus untuk wordpress
+      MYSQL_PASSWORD: password_wp           # Password untuk user tersebut
+    volumes:
+      # Menyimpan data database agar tidak hilang saat container dimatikan
+      - db_data:/var/lib/mysql
+
+  # --- Service 2: WordPress (Aplikasi) ---
+  wordpress:
+    image: wordpress:latest # Menggunakan versi terbaru (sudah include PHP & Apache)
+    container_name: wp_app_container
+    restart: always
+    depends_on:
+      - db  # WordPress baru akan jalan SETELAH database siap
+    ports:
+      # Mapping Port: "Port Komputer Anda : Port Container"
+      # Nanti aksesnya di browser: http://localhost:8080
+      - "8080:80"
+    environment:
+      # Menghubungkan WordPress ke Database di atas
+      WORDPRESS_DB_HOST: db:3306        # 'db' adalah nama service di atas
+      WORDPRESS_DB_USER: user_wp        # Harus sama dengan MYSQL_USER
+      WORDPRESS_DB_PASSWORD: password_wp # Harus sama dengan MYSQL_PASSWORD
+      WORDPRESS_DB_NAME: wordpress_db   # Harus sama dengan MYSQL_DATABASE
+    volumes:
+      # Menyimpan file-file wordpress (plugin, themes, uploads) agar tidak hilang
+      - wp_data:/var/www/html
+
+# --- Volumes Definition ---
+# Ini tempat mendefinisikan "Hardisk Virtual" untuk menyimpan data
+volumes:
+  db_data: # Wadah data database
+  wp_data: # Wadah data file wordpress
+
+```
+
+---
+
+### Cara Menjalankan (Praktek di WSL/Ubuntu)
+
+1. **Buat Folder Project:**
+Ketik ini di terminal Anda:
+```bash
+mkdir my-wordpress
+cd my-wordpress
+
+```
+
+
+2. **Buat File YAML:**
+```bash
+nano docker-compose.yml
+
+```
+
+
+*(Paste kode di atas ke sini. Tekan `CTRL+O`, `Enter` untuk save, lalu `CTRL+X` untuk keluar).*
+3. **Jalankan Docker:**
+```bash
+docker compose up -d
+
+```
+
+
+*Tunggu proses download (pulling) selesai. Ini butuh internet.*
+4. **Akses di Browser:**
+Buka browser di Windows Anda, lalu ketik:
+👉 **`http://localhost:8080`**
+Anda akan langsung melihat layar instalasi WordPress (pilih bahasa, input judul situs, dll).
+
+---
+
+Jika mau mematikan servernya, cukup ketik:
+
+```bash
+docker compose down
+
+```
+
+---
+
 # NEXTCLOUD
 
 **Langkah-langkah:**
@@ -195,7 +294,7 @@ docker compose logs -f
 
 ---
 
-### 2. Stirling-PDF (Pembunuh "iLovePDF") 📄
+# Stirling-PDF (Pembunuh "iLovePDF") 📄
 
 **Masalah:**
 Sering perlu **Merge PDF, Split PDF, Convert PDF to Word, atau Tanda Tangan PDF**?
@@ -228,3 +327,6 @@ services:
 
 3. Jalankan: `docker compose up -d`.
 4. Buka: `http://localhost:8085`.
+
+---
+
