@@ -450,9 +450,19 @@ mau hapus image ga bisa dari compose harus manual
     docker compose down (pasti image masih ada) docker image ls
     docker image rm namaimage:tag
 
+---
+
 terus kalo mau build ulang, misalnya kodenya di ubah
 si compose harus down dulu artinya di hapus dulu baru create lagi
     docker compose down
 (ga usah build lagi)
     docker compose create
     docker compose start
+
+atau 
+
+    docker compose down
+    docker compose build
+    docker compose up
+---
+
