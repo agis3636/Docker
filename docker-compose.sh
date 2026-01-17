@@ -418,6 +418,26 @@ buar directory "build"
 di dalamnya ada file "docker-compose.yaml" dan directory "app"
 di dalam "app" ada file "main.go" dan "Dockerfile"
 
+cari file main.go di pertemuan 8
+dan Dockerfile di dalam materi dockerfile.sh bagian env
+
+---
+
+services:
+  app:
+    container_name: app
+    build:
+      context: "./app"
+      dockerfile: Dockerfile
+    image: "app-golang:1.0.0"
+    environment:
+      - "APP_PORT=8080"
+    ports:
+      - "8080:8080"
+        
+---
+
+
 jalankan compose
 
     docker compose build
